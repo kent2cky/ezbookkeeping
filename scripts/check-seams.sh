@@ -21,6 +21,7 @@ src/views/desktop/users/DataManagementPage.vue
 src/views/desktop/SignupPage.vue
 src/views/mobile/LoginPage.vue
 src/views/mobile/SignupPage.vue
+src/views/mobile/SettingsPage.vue
 "
 
 # Paths that are ours, not upstream's
