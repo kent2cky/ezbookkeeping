@@ -62,3 +62,18 @@ Versioning on the backup bucket means deleted or overwritten files are kept as o
 cleanup, so with versioning on those deletions keep costing storage until a lifecycle rule expires them. Add a rule to the bucket that deletes
 **non-current versions after 30 days** (and removes expired delete markers), so a leaked key or a bug can still be undone for a month without the bucket
 growing forever. The restore drill does not test versioning; check the setting in the S3 console (Bucket > Properties > Bucket Versioning).
+
+## Blank page after a deploy ("please enable JavaScript")
+**What happened on 9 Oct 2026:** after the legal-pages change, both the local app and the live site showed only "We're sorry but ... doesn't work properly
+without JavaScript enabled". The server was fine and every API test passed; the page crashed in the browser on start with
+`require_crypto_js is not a function`.
+**Cause:** the web build is split into several files that import each other. The project's rules in `vite.config.ts` decide which file each source file goes in.
+Three new files used by both the desktop and the mobile app matched no rule, so the bundler put them in its own tiny helper file. That file imports the shared
+code and the shared code imports it back: a loop, so the browser ran things in the wrong order and the encryption library was not ready yet.
+It only happens in the minified production build, so the development server and the unit tests did not show it.
+**Fix:** code used by both apps now lives in `src/ext/shared/`, which has its own line in the `common` rule in `vite.config.ts`.
+**Guards:** `python3 scripts/check-bundle.py` fails on any import loop between build files or application code in a helper file (the deploy workflow and
+Ext CI run it after building), and `scripts/browser-smoke.sh [url]` loads the desktop and mobile screens in a real browser and fails on any error.
+**If it happens again:** run `scripts/browser-smoke.sh https://book.vmerlabs.com` to confirm; a quick rollback is to redeploy the previous image in Render (Manual
+Deploy of an earlier commit). Visitors whose browsers cached the broken files need a hard refresh (Ctrl+Shift+R).
+**Rule for new code:** anything imported by both a desktop and a mobile screen goes in `src/ext/shared/`.

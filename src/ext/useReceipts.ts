@@ -7,7 +7,7 @@ import { parseBigDecimal } from '@/lib/numeral.ts';
 import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 
 import api from './api.ts';
-import { useExtI18n } from './i18n.ts';
+import { useExtI18n } from './shared/i18n.ts';
 import { usePeople } from './people.ts';
 import { buildRepaymentReceipt, buildSaleReceipt, type Receipt, type ReceiptFormat } from './receipt.ts';
 import type { CustomerInfo, RepaymentInfo, SaleInfo } from './types.ts';

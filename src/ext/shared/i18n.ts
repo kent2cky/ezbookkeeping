@@ -5,7 +5,7 @@ import { useI18n } from '@/locales/helpers.ts';
 // Texts of the ext screens live in src/ext/locales/<language>.json, not in the app's own locale files, so merging
 // upstream never touches them. As in the app, the English sentence is the key; missing languages and missing keys
 // fall back to English. After adding a label, run scripts/ext-extract-i18n.py to register it.
-const files = import.meta.glob<Record<string, unknown>>('./locales/*.json', { eager: true, import: 'default' });
+const files = import.meta.glob<Record<string, unknown>>('../locales/*.json', { eager: true, import: 'default' });
 
 let registered = false;
 
@@ -14,7 +14,7 @@ function registerMessages(): void {
 
     for (const [path, messages] of Object.entries(files)) {
         // "./locales/zh_Hans.json" -> "zh-Hans", the language key the app uses
-        const language = path.replace('./locales/', '').replace('.json', '').replace('_', '-');
+        const language = path.replace('../locales/', '').replace('.json', '').replace('_', '-');
         i18n.mergeLocaleMessage(language, messages);
     }
 

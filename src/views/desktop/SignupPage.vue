@@ -205,7 +205,7 @@
 </template>
 
 <script setup lang="ts">
-import ExtLegalNotice from '@/ext/components/ExtLegalNotice.vue'; // [ext]
+import ExtLegalNotice from '@/ext/shared/ExtLegalNotice.vue'; // [ext]
 import SnackBar from '@/components/desktop/SnackBar.vue';
 import type { StepBarItem } from '@/components/desktop/StepsBar.vue';
 

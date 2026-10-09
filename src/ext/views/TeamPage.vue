@@ -158,7 +158,7 @@ import ExtSnackBar from '@/ext/components/ExtSnackBar.vue';
 
 import { ref, computed, onMounted, useTemplateRef } from 'vue';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 
 import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 

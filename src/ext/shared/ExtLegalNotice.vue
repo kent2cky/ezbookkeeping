@@ -9,9 +9,9 @@
 
 <script setup lang="ts">
 // Plain HTML only, so the same notice works in the desktop (Vuetify) and the mobile (Framework7) screens.
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 
-import { LEGAL_TERMS_URL, LEGAL_PRIVACY_URL } from '@/ext/legalVersion.ts';
+import { LEGAL_TERMS_URL, LEGAL_PRIVACY_URL } from '@/ext/shared/legalVersion.ts';
 
 const { tt } = useExtI18n();
 </script>

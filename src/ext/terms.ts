@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 import { getCurrentUserInfo, isUserLogined } from '@/lib/userstate.ts';
 
 import api from './api.ts';
-import { LEGAL_VERSION } from './legalVersion.ts';
+import { LEGAL_VERSION } from './shared/legalVersion.ts';
 
 // Everyone must accept the current Terms of Service and Privacy Policy. The acceptance is stored on the server (who,
 // which version, when), and the app asks again whenever the published version changes (legal/details.json).

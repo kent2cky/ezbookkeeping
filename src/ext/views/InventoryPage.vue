@@ -99,7 +99,7 @@ import ExtStockHistoryDialog from '@/ext/components/ExtStockHistoryDialog.vue';
 
 import { ref, computed, onMounted, useTemplateRef } from 'vue';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { useUserStore } from '@/stores/user.ts';
 
 import { parseBigDecimal } from '@/lib/numeral.ts';

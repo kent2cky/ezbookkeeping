@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-import { useExtI18n } from './i18n.ts';
+import { useExtI18n } from './shared/i18n.ts';
 import api from './api.ts';
 import { useBusiness } from './business.ts';
 import type { PersonInfo } from './types.ts';

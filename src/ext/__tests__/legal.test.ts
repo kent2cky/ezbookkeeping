@@ -4,7 +4,7 @@ import details from '../../../legal/details.json';
 import termsHtml from '../../../public/legal/terms.html?raw';
 import privacyHtml from '../../../public/legal/privacy.html?raw';
 
-import { LEGAL_PRIVACY_URL, LEGAL_TERMS_URL, LEGAL_VERSION } from '@/ext/legalVersion.ts';
+import { LEGAL_PRIVACY_URL, LEGAL_TERMS_URL, LEGAL_VERSION } from '@/ext/shared/legalVersion.ts';
 
 // The pages are generated from legal/details.json (python3 scripts/build-legal.py). These tests catch a forgotten rebuild.
 describe('legal pages', () => {
