@@ -84,10 +84,10 @@
                                                v-model:show="showPaymentAccounts" v-model="paymentAccountId">
                     </list-item-selection-popup>
                 </f7-list-item>
-                <f7-list-item link="#" :title="tt('Owed amount is tracked in')" :after="optionTitle(receivableAccountOptions, receivableAccountId)"
+                <f7-list-item link="#" :title="tt('Owed-money account')" :after="optionTitle(receivableAccountOptions, receivableAccountId)"
                               :footer="problems.receivable" @click="showReceivableAccounts = true" v-if="totals.credit > 0">
                     <list-item-selection-popup value-type="item" key-field="value" value-field="value" title-field="title"
-                                               :title="tt('Owed amount is tracked in')" :items="receivableAccountOptions"
+                                               :title="tt('Owed-money account')" :items="receivableAccountOptions"
                                                v-model:show="showReceivableAccounts" v-model="receivableAccountId">
                     </list-item-selection-popup>
                 </f7-list-item>
