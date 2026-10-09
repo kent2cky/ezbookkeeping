@@ -19,6 +19,7 @@ import (
 	"github.com/mayswind/ezbookkeeping/pkg/core"
 	"github.com/mayswind/ezbookkeeping/pkg/cron"
 	"github.com/mayswind/ezbookkeeping/pkg/errs"
+	"github.com/mayswind/ezbookkeeping/pkg/ext"
 	"github.com/mayswind/ezbookkeeping/pkg/log"
 	"github.com/mayswind/ezbookkeeping/pkg/mcp"
 	"github.com/mayswind/ezbookkeeping/pkg/middlewares"
@@ -138,6 +139,7 @@ func startWebServer(c *core.CliContext) error {
 	router.Static("/css", filepath.Join(config.StaticRootPath, "css"))
 	router.Static("/img", filepath.Join(config.StaticRootPath, "img"))
 	router.Static("/fonts", filepath.Join(config.StaticRootPath, "fonts"))
+	router.Static("/legal", filepath.Join(config.StaticRootPath, "legal")) // [ext] Terms of Service and Privacy Policy
 
 	router.StaticFile("robots.txt", filepath.Join(config.StaticRootPath, "robots.txt"))
 	router.StaticFile("favicon.ico", filepath.Join(config.StaticRootPath, "favicon.ico"))
@@ -336,6 +338,7 @@ func startWebServer(c *core.CliContext) error {
 		apiV1Route := apiRoute.Group("/v1")
 		apiV1Route.Use(bindMiddleware(middlewares.JWTAuthorizationByHeader(config), config))
 		apiV1Route.Use(bindMiddleware(middlewares.APITokenIpLimit(config), config))
+		apiV1Route.Use(ext.DelegationMiddleware(func(fn core.MiddlewareHandlerFunc) gin.HandlerFunc { return bindMiddleware(fn, config) })) // [ext] owner/staff delegation
 		{
 			// Tokens
 			apiV1Route.GET("/tokens/list.json", bindApi(api.Tokens.TokenListHandler, config))
@@ -517,6 +520,9 @@ func startWebServer(c *core.CliContext) error {
 
 			// System
 			apiV1Route.GET("/systems/version.json", bindApi(api.Systems.VersionHandler, config))
+
+			// [ext] staff, inventory, sales and credit
+			ext.RegisterRoutes(apiV1Route, func(fn core.ApiHandlerFunc) gin.HandlerFunc { return bindApi(fn, config) })
 		}
 	}
 

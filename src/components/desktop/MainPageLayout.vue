@@ -17,6 +17,7 @@
         </div>
 
         <div :class="{ 'layout-content-wrapper': !noNavbar }">
+            <ext-business-banner /> <!-- [ext] -->
             <div class="layout-navbar navbar-blur">
                 <div class="navbar-content-container">
                     <div class="navbar-content d-flex h-100 align-center">
@@ -88,6 +89,8 @@
                                     </v-btn>
                                 </router-link>
 
+                                <ext-top-nav /> <!-- [ext] -->
+
                                 <router-link class="d-inline-flex align-center" to="/transaction/list?pageType=0&dateType=7"
                                              v-if="showAddTransactionButtonInDesktopNavbar">
                                     <v-btn class="add-transaction-button ms-2" color="primary" density="comfortable" variant="flat"
@@ -137,6 +140,7 @@
                                             {{ currentNickName }}
                                         </v-list-item-title>
                                     </v-list-item>
+                                    <ext-profile-menu-items /> <!-- [ext] -->
                                     <v-divider class="my-1"/>
                                     <v-list-item :prepend-icon="mdiCogOutline"
                                                  :title="tt('Settings')"
@@ -182,6 +186,9 @@
 <script setup lang="ts">
 import AboutDialog from '@/views/desktop/common/dialogs/AboutDialog.vue';
 import SnackBar from '@/components/desktop/SnackBar.vue';
+import ExtTopNav from '@/ext/components/ExtTopNav.vue'; // [ext]
+import ExtProfileMenuItems from '@/ext/components/ExtProfileMenuItems.vue'; // [ext]
+import ExtBusinessBanner from '@/ext/components/ExtBusinessBanner.vue'; // [ext]
 
 import { ref, computed, useTemplateRef } from 'vue';
 
