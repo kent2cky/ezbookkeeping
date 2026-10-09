@@ -28,6 +28,19 @@ jobs:
       - name: Legal pages are complete and up to date
         run: python3 scripts/build-legal.py --check --strict
 
+      # A web build can pass every test and still show visitors a blank page (outage of 9 Oct 2026). Build the pages here and
+      # fail the deploy if the files import each other in a loop or the shared code is not where the chunk rules put it.
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Web build has no import loops
+        run: |
+          npm ci
+          npm run build
+          python3 scripts/check-bundle.py dist
+
       - uses: docker/setup-buildx-action@v4
 
       - uses: docker/login-action@v4

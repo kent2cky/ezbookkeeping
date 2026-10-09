@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import ExtTermsGate from '@/ext/components/ExtTermsGate.vue';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { installBusinessHeader, switchBusiness, useBusiness } from '@/ext/business.ts';
 
 import { mdiAlertOutline } from '@mdi/js';

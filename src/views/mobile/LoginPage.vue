@@ -199,7 +199,7 @@
 </template>
 
 <script setup lang="ts">
-import ExtLegalNotice from '@/ext/components/ExtLegalNotice.vue'; // [ext]
+import ExtLegalNotice from '@/ext/shared/ExtLegalNotice.vue'; // [ext]
 import { ref, computed } from 'vue';
 import type { Router } from 'framework7/types';
 

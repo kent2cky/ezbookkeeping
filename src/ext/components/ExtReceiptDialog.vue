@@ -75,7 +75,7 @@ import ExtSnackBar from '@/ext/components/ExtSnackBar.vue';
 
 import { ref, watch, useTemplateRef } from 'vue';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 
 import { receiptToText, type Receipt } from '@/ext/receipt.ts';
 

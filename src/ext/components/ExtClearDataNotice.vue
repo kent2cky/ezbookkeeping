@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { useBusinessFeatures } from '@/ext/features.ts';
 
 const { tt } = useExtI18n();

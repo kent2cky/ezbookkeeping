@@ -12,7 +12,11 @@ The new features live on the branch `feature/ext-staff-inventory`; merge it into
 - [ ] Run `scripts/restore-drill.sh` and keep its output: it shows the state of the backup before you change anything.
 
 ## 2. Test locally (about 15 minutes)
-1. `python3 scripts/ext-smoke.py` against your local server must end with `0 failure(s)`.
+Start the app on your own machine with `scripts/run-local.sh bg` (rebuild first with `scripts/run-local.sh rebuild` after changing code), open
+http://localhost:8080, and stop it with `scripts/run-local.sh stop`. Run the script with no argument to see all commands.
+
+1. `python3 scripts/ext-smoke.py` against your local server must end with `0 failure(s)`, and `scripts/browser-smoke.sh` with `BROWSER CHECK PASSED`
+   (the first tests the server, the second that the pages really start in a browser; after `rebuild`, run `python3 scripts/check-bundle.py` too).
 2. In a browser, with a fresh account: sign up, see the notice with the two links, open both pages, log in, accept the terms in the box.
 3. Settings > Business Features: switch on, fill in Receipt details, download the business data and open a few files in a spreadsheet.
 4. Add an item and stock, make a cash sale and a credit sale, print a receipt (and try Save as PDF), record a repayment.
@@ -21,7 +25,10 @@ The new features live on the branch `feature/ext-staff-inventory`; merge it into
 
 ## 3. Deploy
 - [ ] Merge to `main` and push. Watch the GitHub Actions run (the legal check is the first step) and then the Render deploy.
-- [ ] Open the live site: the legal links work, and accept the terms with your own account.
+- [ ] Open the live site in a private window: the login screen must appear. Then run `scripts/browser-smoke.sh https://book.vmerlabs.com`; it opens the
+  desktop and mobile screens in a real browser and must say BROWSER CHECK PASSED. (Browsers that already visited may keep the old files; a hard
+  refresh, Ctrl+Shift+R, or Application > Storage > Clear site data fixes that.)
+- [ ] Accept the terms with your own account and check that the legal links work.
 - [ ] Add one transaction, wait about ten seconds, run `scripts/restore-drill.sh`: "last change copied to S3" should be the current time.
   After a day, `snapshots` should show a new snapshot each 24 hours, and the first week of history builds up from now.
 - [ ] Use "Forget password" on the live site with a verified address (SES is still in sandbox, so every pilot customer's address must be verified in SES first).

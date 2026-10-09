@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 
 import api from '@/ext/api.ts';
 import type { LocationInfo } from '@/ext/types.ts';

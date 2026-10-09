@@ -76,7 +76,7 @@ import ExtSnackBar from '@/ext/components/ExtSnackBar.vue';
 
 import { ref, reactive, watch, onMounted, useTemplateRef } from 'vue';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 import api from '@/ext/api.ts';
 import { saveBlob } from '@/ext/csv.ts';
 import { useBusiness } from '@/ext/business.ts';

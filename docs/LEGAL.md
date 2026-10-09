@@ -7,7 +7,7 @@ The app has a Terms of Service page and a Privacy Policy page, a recorded accept
 - `legal/terms.template.html`, `legal/privacy.template.html`: the wording, with `{{placeholders}}`.
 - `legal/details.json`: your company name, address, contact email, country, governing law, hosting region and a few policy choices. **This is the only
   file you normally edit.** Values that still start with `REPLACE` show highlighted in yellow on the pages.
-- `scripts/build-legal.py`: builds `public/legal/terms.html`, `public/legal/privacy.html` and `src/ext/legalVersion.ts` from the two. The built files are
+- `scripts/build-legal.py`: builds `public/legal/terms.html`, `public/legal/privacy.html` and `src/ext/shared/legalVersion.ts` from the two. The built files are
   committed. `--check --strict` fails while any `REPLACE` is left or the built files are out of date; the deploy workflow runs it, so the pages cannot go
   live unfinished.
 - The pages are public at `/legal/terms.html` and `/legal/privacy.html` (also linked from the login and signup screens and from the profile menu).
@@ -18,7 +18,7 @@ The app has a Terms of Service page and a Privacy Policy page, a recorded accept
 1. Edit `legal/details.json`: replace every `REPLACE...`.
 2. `python3 scripts/build-legal.py` then open `public/legal/terms.html` and `privacy.html` in a browser and read both.
 3. `python3 scripts/build-legal.py --check --strict` must print "legal pages are up to date and complete".
-4. Commit `legal/details.json`, `public/legal/*` and `src/ext/legalVersion.ts` together.
+4. Commit `legal/details.json`, `public/legal/*` and `src/ext/shared/legalVersion.ts` together.
 
 ## Facts the Privacy Policy states that you must keep true
 | Statement | Where it comes from | Check |

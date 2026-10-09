@@ -172,7 +172,7 @@
 </template>
 
 <script setup lang="ts">
-import ExtLegalNotice from '@/ext/components/ExtLegalNotice.vue'; // [ext]
+import ExtLegalNotice from '@/ext/shared/ExtLegalNotice.vue'; // [ext]
 import { VTextField } from 'vuetify/components/VTextField';
 import SnackBar from '@/components/desktop/SnackBar.vue';
 

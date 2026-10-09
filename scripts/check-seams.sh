@@ -16,6 +16,7 @@ src/router/desktop.ts
 src/components/desktop/MainPageLayout.vue
 src/views/desktop/settings/SettingsPageLayout.vue
 src/views/desktop/LoginPage.vue
+vite.config.ts
 src/views/desktop/users/DataManagementPage.vue
 src/views/desktop/SignupPage.vue
 src/views/mobile/LoginPage.vue

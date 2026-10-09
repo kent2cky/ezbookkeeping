@@ -25,12 +25,12 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { useRootStore } from '@/stores/index.ts';
 import { useSettingsStore } from '@/stores/setting.ts';
 
 import { describeError } from '@/ext/api.ts';
-import { LEGAL_TERMS_URL, LEGAL_PRIVACY_URL } from '@/ext/legalVersion.ts';
+import { LEGAL_TERMS_URL, LEGAL_PRIVACY_URL } from '@/ext/shared/legalVersion.ts';
 import { useTerms } from '@/ext/terms.ts';
 
 const { tt } = useExtI18n();

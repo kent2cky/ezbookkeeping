@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds the Terms of Service and Privacy Policy pages from legal/*.template.html and legal/details.json.
 
-    python3 scripts/build-legal.py                 build public/legal/terms.html, public/legal/privacy.html and src/ext/legalVersion.ts
+    python3 scripts/build-legal.py                 build public/legal/terms.html, public/legal/privacy.html and src/ext/shared/legalVersion.ts
     python3 scripts/build-legal.py --check         fail if the generated files are out of date with the templates and details
     python3 scripts/build-legal.py --check --strict    also fail while any value in details.json still starts with REPLACE
 
@@ -18,7 +18,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LEGAL = ROOT / "legal"
 OUT = ROOT / "public" / "legal"
-VERSION_FILE = ROOT / "src" / "ext" / "legalVersion.ts"
+VERSION_FILE = ROOT / "src" / "ext" / "shared" / "legalVersion.ts"
 
 PAGES = {"terms": "Terms of Service", "privacy": "Privacy Policy"}
 PLACEHOLDER = re.compile(r"\{\{(\w+)(\|plain)?\}\}")

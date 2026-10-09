@@ -24,5 +24,21 @@ jobs:
           BASE="origin/${{ github.base_ref || 'main' }}"
           scripts/check-seams.sh "$BASE"
 
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Frontend checks
+        run: |
+          npm ci
+          npx vue-tsc --noEmit
+          npx vitest run src/ext
+          npm run build
+          python3 scripts/check-bundle.py dist
+
+      - name: Legal pages
+        run: python3 -m unittest scripts/test_build_legal.py && python3 scripts/build-legal.py --check
+
       - name: Ext tests
         run: go test ./pkg/ext/...

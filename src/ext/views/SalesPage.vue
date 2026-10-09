@@ -206,7 +206,7 @@ import ExtReceiptDialog from '@/ext/components/ExtReceiptDialog.vue';
 
 import { ref, reactive, computed, watch, onMounted, useTemplateRef } from 'vue';
 
-import { useExtI18n } from '@/ext/i18n.ts';
+import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { parseBigDecimal } from '@/lib/numeral.ts';
 import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 
