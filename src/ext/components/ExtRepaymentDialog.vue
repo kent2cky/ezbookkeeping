@@ -52,11 +52,11 @@ import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { parseBigDecimal } from '@/lib/numeral.ts';
 import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 
-import api from '@/ext/api.ts';
-import { useBusiness } from '@/ext/business.ts';
-import { useBusinessAccounts } from '@/ext/accounts.ts';
-import { loadFormDefaults, saveFormDefaults } from '@/ext/defaults.ts';
-import type { CustomerInfo, RepaymentInfo, SaleInfo } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { useBusiness } from '@/ext/shared/business.ts';
+import { useBusinessAccounts } from '@/ext/shared/accounts.ts';
+import { loadFormDefaults, saveFormDefaults } from '@/ext/shared/defaults.ts';
+import type { CustomerInfo, RepaymentInfo, SaleInfo } from '@/ext/shared/types.ts';
 
 const props = defineProps<{
     show: boolean;

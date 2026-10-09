@@ -179,11 +179,11 @@ import { useUserStore } from '@/stores/user.ts';
 import { parseBigDecimal } from '@/lib/numeral.ts';
 import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 
-import api from '@/ext/api.ts';
-import { useBusiness } from '@/ext/business.ts';
-import { downloadCsv } from '@/ext/csv.ts';
-import { formatQty } from '@/ext/qty.ts';
-import type { LocationInfo, LowStockRow, ReceivablesReport, StockValueReport } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { useBusiness } from '@/ext/shared/business.ts';
+import { downloadCsv } from '@/ext/shared/csv.ts';
+import { formatQty } from '@/ext/shared/qty.ts';
+import type { LocationInfo, LowStockRow, ReceivablesReport, StockValueReport } from '@/ext/shared/types.ts';
 
 type SnackBarType = InstanceType<typeof ExtSnackBar>;
 type ReportTab = 'stock' | 'low' | 'receivables';

@@ -51,10 +51,10 @@ import { useExtI18n } from '@/ext/shared/i18n.ts';
 
 import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 
-import api from '@/ext/api.ts';
-import { usePeople } from '@/ext/people.ts';
-import { formatQty } from '@/ext/qty.ts';
-import type { ItemInfo, LocationInfo, StockMovement } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { usePeople } from '@/ext/shared/people.ts';
+import { formatQty } from '@/ext/shared/qty.ts';
+import type { ItemInfo, LocationInfo, StockMovement } from '@/ext/shared/types.ts';
 
 const props = defineProps<{
     show: boolean;

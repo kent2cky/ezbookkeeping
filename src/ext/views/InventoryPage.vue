@@ -104,10 +104,10 @@ import { useUserStore } from '@/stores/user.ts';
 
 import { parseBigDecimal } from '@/lib/numeral.ts';
 
-import api from '@/ext/api.ts';
-import { useBusiness } from '@/ext/business.ts';
-import { formatQty } from '@/ext/qty.ts';
-import type { ItemInfo, LocationInfo, StockLevel } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { useBusiness } from '@/ext/shared/business.ts';
+import { formatQty } from '@/ext/shared/qty.ts';
+import type { ItemInfo, LocationInfo, StockLevel } from '@/ext/shared/types.ts';
 
 type ConfirmDialogType = InstanceType<typeof ConfirmDialog>;
 type SnackBarType = InstanceType<typeof ExtSnackBar>;
