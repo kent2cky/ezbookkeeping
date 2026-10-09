@@ -288,7 +288,7 @@ Deployment: nothing to change; the next deploy creates the tables. Back up the d
 
 ## Mobile app
 
-An app installed on a phone (PWA) always opens the mobile app (Framework7), so the business features have mobile screens of their own, in `src/ext/mobile/`. The work is planned in phases; Phase 0 and Phase 1 are done.
+An app installed on a phone (PWA) always opens the mobile app (Framework7), so the business features have mobile screens of their own, in `src/ext/mobile/`. The work is planned in phases; Phases 0, 1 and 2 are done.
 
 - **Shared code.** Everything both apps use lives in `src/ext/shared/` (api, types, business, features, money, qty, receipt, people, defaults, accounts, useReceipts, terms, csv, the receipt paper `ExtReceiptPaper.vue` and `receiptOutput.ts` for print, copy and share). The 'common' chunk rule in `vite.config.ts` covers that folder; code used by both apps anywhere else brings back the blank-page crash (`scripts/check-bundle.py` catches it).
 - **Business header.** `src/ext/mobile/routes.ts` calls `installBusinessHeader()` when the mobile router loads, so staff and managers see their employer's books on the phone as on the desktop.
@@ -298,9 +298,12 @@ An app installed on a phone (PWA) always opens the mobile app (Framework7), so t
 - **Checkout** (`ExtMobileCheckoutPopup.vue`): − / + per line, Paid in full / Part payment / On credit, customer with *+ New customer* (`ExtMobileCustomerSheet.vue`), payment account, owed-money account and income category remembered per business (`defaults.ts`, shared with the desktop Sales page). Owners and managers can change prices and give a discount with the app's number pad; staff cannot (the server enforces it too). Arithmetic is `money.ts`, as on the desktop and the server.
 - **Receipts** (`ExtMobileReceiptPopup.vue`): shown right after a sale; *Share receipt* opens the phone's share sheet (WhatsApp, SMS, email) with the text version, plus *Copy as text* and *Print or save as PDF*.
 - **Recent sales** (`SalesHistoryPage.vue`, `/ext/sales`): latest sales with Paid / Owes / Voided; tap for the receipt, and *Void sale* for owners and managers.
+- **Customers** (`CustomersPage.vue`, `/ext/customers`): search by name, phone or email, *All / Owe me*, the total owed at the top and the biggest debts first; *+* adds a customer (`ExtMobileCustomerSheet.vue`, which also edits). The list is kept in `customers.ts`, shared with the customer screen.
+- **A customer** (`CustomerPage.vue`, `/ext/customer?id=`): what they owe in large type, *Record repayment*, *Send reminder* (a polite message through the share sheet, copied where there is none), *Call*, and *New sale* (opens Sell with the customer chosen); their unpaid sales and repayments, each opening its receipt. Owners and managers can edit and delete (staff cannot; the server enforces it too).
+- **Repayments** (`ExtMobileRepaymentPopup.vue`): the amount starts at everything owed and is changed on the number pad; *Apply to* the oldest sales or one sale; payment account, owed-money account and transfer category remembered per business (shared with the desktop dialog). The receipt opens right after. Amounts on these screens use the currency of the business's accounts rather than the person's own default currency, which matters for staff.
 - **Barcode scanning** (`barcode.ts`, `ExtMobileBarcodeScanner.vue`): the camera keeps scanning until *Done*, adding the item whose SKU equals the code (spaces and letter case ignored). It uses the browser's own reader (`BarcodeDetector`): Android Chrome has it, iPhones do not, and there the scan button is hidden. No library is bundled, so `package.json` is untouched; adding one (for example `barcode-detector`, which brings a WebAssembly reader) would make scanning work on iPhones too.
 - **Toasts and dialogs** use `src/ext/mobile/ui.ts`, which shows text as given; the app's own helpers translate the text again, which would garble customer names or server messages.
-- **Still on the desktop screens** (opened through `src/ext/shared/mobileBridge.ts`, with a *Back to the app* bar): Customers and repayments (Phase 2), Inventory (Phase 3), Reports, Team and Business Features (Phase 4). Phase 5 removes the bridge once they all exist on mobile.
+- **Still on the desktop screens** (opened through `src/ext/shared/mobileBridge.ts`, with a *Back to the app* bar): Inventory (Phase 3), Reports, Team and Business Features (Phase 4). Phase 5 removes the bridge once they all exist on mobile.
 
 ## 9. What is left (next steps, in order)
 

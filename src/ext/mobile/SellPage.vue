@@ -16,7 +16,7 @@
 
         <div class="ext-shortcuts">
             <f7-button small tonal round href="/ext/sales">{{ tt('Recent sales') }}</f7-button>
-            <f7-button small tonal round @click="openBusinessScreen('/ext/customers')">{{ tt('Customers') }}</f7-button>
+            <f7-button small tonal round href="/ext/customers">{{ tt('Customers') }}</f7-button>
             <f7-button small tonal round @click="openBusinessScreen('/ext/inventory')">{{ tt('Inventory') }}</f7-button>
             <f7-button small tonal round @click="openBusinessScreen('/ext/reports')" v-if="canManage">{{ tt('Reports') }}</f7-button>
             <f7-button small tonal round @click="openBusinessScreen('/ext/team')">{{ tt('Team') }}</f7-button>
