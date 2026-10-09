@@ -69,6 +69,7 @@ pkg/ext/
 | `src/router/desktop.ts` | one import and one `...extRoutes` line, tagged `[ext]` |
 | `src/components/desktop/MainPageLayout.vue` | imports and tags for `<ext-top-nav />` (toolbar), `<ext-profile-menu-items />` (avatar menu) and `<ext-business-banner />` (top of page), tagged `[ext]` |
 | `src/views/desktop/settings/SettingsPageLayout.vue` | one import and one `<ext-settings-nav-item />` line (the "Business Features" settings entry), tagged `[ext]` |
+| `src/views/mobile/SettingsPage.vue` | one import and one `<ext-mobile-business-list />` line (the "Business" entries of the mobile app, see below), tagged `[ext]` |
 
 `scripts/check-seams.sh [base]` fails if a branch changes any other upstream file or makes a seam grow past 40 lines.
 Run it before merging and in CI (`.github/workflows/ext-ci.yml`).
@@ -299,7 +300,7 @@ Deployment: nothing to change; the next deploy creates the tables. Back up the d
    **Translations:** all labels are registered in `src/ext/locales/en.json`, with the English sentence as the key like the app's own `en.json`. Other languages: add `src/ext/locales/<code>.json` (underscore in the file name for a hyphenated code, e.g. `zh_Hans.json`) with the same keys; missing keys fall back to English. After adding a label run `python3 scripts/ext-extract-i18n.py`; a unit test (`src/ext/__tests__/locales.test.ts`) fails if a label or placeholder is not registered.
 
    Still to build: a sale detail view (a printable receipt exists), sending receipts by email. Possible next steps for reports: sales by day / by person, profit using cost of goods sold, charts.
-   Known gaps: prices are shown in the *user's* default currency because the API does not yet return the business currency; new strings use English text as the key and are not translated; the pages have been type-checked and built but not exercised in a browser, so expect layout fixes; the mobile app has no ext screens.
+   Known gaps: prices are shown in the *user's* default currency because the API does not yet return the business currency; new strings use English text as the key and are not translated; the pages have been type-checked and built but not exercised in a browser, so expect layout fixes; the mobile app has no ext screens of its own: its Settings page has a *Business* list (`src/ext/mobile/ExtMobileBusinessList.vue`) that opens the desktop screens, which are laid out to work on a phone, and those then show a *Back to the app* bar (`src/ext/shared/mobileBridge.ts`). This is how an installed app (PWA) on a phone, which always starts in the mobile app, reaches sales, customers, inventory, reports and the team.
 2. **Registration and invitations for new people.** Invitees must already have an account, and public registration is closed (paywall plan).
    Decide how a new staff member gets an account: invitation links that allow registration, or the owner creates the account.
 3. **Billing / paywall** per owner; staff seats belong to the owner's subscription.

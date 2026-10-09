@@ -2,6 +2,8 @@
     <f7-page>
         <f7-navbar :title="tt('Settings')" :back-link="tt('Back')"></f7-navbar>
 
+        <ext-mobile-business-list /> <!-- [ext] -->
+
         <f7-block-title class="margin-top">{{ currentNickName }}</f7-block-title>
         <f7-list strong inset dividers>
             <f7-list-item :title="tt('User Profile')" link="/user/profile"></f7-list-item>
@@ -99,6 +101,8 @@
 </template>
 
 <script setup lang="ts">
+import ExtMobileBusinessList from '@/ext/mobile/ExtMobileBusinessList.vue'; // [ext]
+
 import { ref, computed } from 'vue';
 import type { Router } from 'framework7/types';
 
