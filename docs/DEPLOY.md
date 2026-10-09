@@ -12,6 +12,9 @@ The new features live on the branch `feature/ext-staff-inventory`; merge it into
 - [ ] Run `scripts/restore-drill.sh` and keep its output: it shows the state of the backup before you change anything.
 
 ## 2. Test locally (about 15 minutes)
+Start the app on your own machine with `scripts/run-local.sh bg` (rebuild first with `scripts/run-local.sh rebuild` after changing code), open
+http://localhost:8080, and stop it with `scripts/run-local.sh stop`. Run the script with no argument to see all commands.
+
 1. `python3 scripts/ext-smoke.py` against your local server must end with `0 failure(s)`.
 2. In a browser, with a fresh account: sign up, see the notice with the two links, open both pages, log in, accept the terms in the box.
 3. Settings > Business Features: switch on, fill in Receipt details, download the business data and open a few files in a spreadsheet.
