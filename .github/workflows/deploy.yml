@@ -14,14 +14,10 @@ env:
   IMAGE: ghcr.io/${{ github.repository }}
 
 jobs:
-  build:
+  # Runs at the same time as the image build. The deploy waits for both, so a build that would show visitors a blank page, or
+  # legal pages with details missing, never reaches Render even though its image has already been pushed.
+  verify:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    outputs:
-      image: ${{ steps.ref.outputs.image }}
-      render-image: ${{ steps.ref.outputs.render_image }}
     steps:
       - uses: actions/checkout@v6
 
@@ -40,6 +36,17 @@ jobs:
           npm ci
           npm run build
           python3 scripts/check-bundle.py dist
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.ref.outputs.image }}
+      render-image: ${{ steps.ref.outputs.render_image }}
+    steps:
+      - uses: actions/checkout@v6
 
       - uses: docker/setup-buildx-action@v4
 
@@ -84,7 +91,7 @@ jobs:
             ${{ steps.ref.outputs.render_image }}:latest
 
   deploy:
-    needs: build
+    needs: [build, verify]
     runs-on: ubuntu-latest
     environment: production
     steps:
