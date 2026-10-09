@@ -1,10 +1,13 @@
 <template>
-    <f7-page @page:afterin="loadAccess">
+    <f7-page>
         <f7-navbar :title="tt('Business')" :back-link="tt('Back')"></f7-navbar>
 
         <f7-list strong inset dividers class="margin-top" v-if="available">
-            <f7-list-item link="#" :title="tt('Sales')" @click="openBusinessScreen('/ext/sales')">
+            <f7-list-item link="/ext/sell" :title="tt('Sell')">
                 <template #media><f7-icon f7="cart"></f7-icon></template>
+            </f7-list-item>
+            <f7-list-item link="/ext/sales" :title="tt('Recent sales')">
+                <template #media><f7-icon f7="clock"></f7-icon></template>
             </f7-list-item>
             <f7-list-item link="#" :title="tt('Customers')" @click="openBusinessScreen('/ext/customers')">
                 <template #media><f7-icon f7="person_2"></f7-icon></template>
@@ -31,10 +34,12 @@
 <script setup lang="ts">
 import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { openBusinessScreen } from '@/ext/shared/mobileBridge.ts';
-import { useMobileBusinessAccess } from './businessAccess.ts';
+import { useBusiness } from '@/ext/shared/business.ts';
+import { useBusinessFeatures } from '@/ext/shared/features.ts';
 
-// The page behind the Business tab. The screens open in the desktop app, which is laid out for phones too
-// (see src/ext/shared/mobileBridge.ts).
+// Everything business in one list. Sell and Recent sales are mobile screens; the others still open the desktop
+// screens (laid out for phones too, see src/ext/shared/mobileBridge.ts) until they get mobile versions.
 const { tt } = useExtI18n();
-const { available, teamAvailable, canManage, loadAccess } = useMobileBusinessAccess();
+const { canManage } = useBusiness();
+const { available, teamAvailable } = useBusinessFeatures();
 </script>

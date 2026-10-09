@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { useBusinessFeatures } from '@/ext/features.ts';
+import { useBusinessFeatures } from '@/ext/shared/features.ts';
 
 const { tt } = useExtI18n();
 const { available } = useBusinessFeatures();

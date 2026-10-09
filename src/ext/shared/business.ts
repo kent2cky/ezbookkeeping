@@ -71,10 +71,19 @@ export function installBusinessHeader(): void {
     });
 }
 
-/** Selects a business and reloads, because every screen holds data of the previous one. */
-export function switchBusiness(ownerUid: string): void {
+/**
+ * Selects a business and reloads, because every screen holds data of the previous one. With `startUrl` the app starts
+ * afresh at that address instead of reloading the current one.
+ */
+export function switchBusiness(ownerUid: string, startUrl?: string): void {
     const own = businesses.value.find(b => b.status === 'owner');
     writeSelection(own && own.ownerUid === ownerUid ? '' : ownerUid);
+
+    if (startUrl) {
+        // replacing the address alone does not reload when only the part after # changes
+        window.history.replaceState(null, '', startUrl);
+    }
+
     window.location.reload();
 }
 

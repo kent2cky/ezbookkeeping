@@ -164,10 +164,10 @@ import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 
 import { mdiCheckCircle, mdiCircleOutline } from '@mdi/js';
 
-import api from '@/ext/api.ts';
-import { switchBusiness, useBusiness } from '@/ext/business.ts';
-import { usePeople } from '@/ext/people.ts';
-import type { AuditEntry, BusinessInfo, BusinessRole, StaffInfo } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { switchBusiness, useBusiness } from '@/ext/shared/business.ts';
+import { usePeople } from '@/ext/shared/people.ts';
+import type { AuditEntry, BusinessInfo, BusinessRole, StaffInfo } from '@/ext/shared/types.ts';
 
 type ConfirmDialogType = InstanceType<typeof ConfirmDialog>;
 type SnackBarType = InstanceType<typeof ExtSnackBar>;

@@ -210,15 +210,15 @@ import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { parseBigDecimal } from '@/lib/numeral.ts';
 import { parseDateTimeFromUnixTime } from '@/lib/datetime.ts';
 
-import api from '@/ext/api.ts';
-import { useBusiness } from '@/ext/business.ts';
-import { useBusinessAccounts } from '@/ext/accounts.ts';
-import { usePeople } from '@/ext/people.ts';
-import { useReceipts } from '@/ext/useReceipts.ts';
-import { loadFormDefaults, saveFormDefaults } from '@/ext/defaults.ts';
-import { formatQty, parseQty } from '@/ext/qty.ts';
-import { computeTotals, lineTotal, type PayMode } from '@/ext/money.ts';
-import type { CustomerInfo, ItemInfo, LocationInfo, SaleInfo, StockLevel } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { useBusiness } from '@/ext/shared/business.ts';
+import { useBusinessAccounts } from '@/ext/shared/accounts.ts';
+import { usePeople } from '@/ext/shared/people.ts';
+import { useReceipts } from '@/ext/shared/useReceipts.ts';
+import { loadFormDefaults, saveFormDefaults } from '@/ext/shared/defaults.ts';
+import { formatQty, parseQty } from '@/ext/shared/qty.ts';
+import { computeTotals, lineTotal, type PayMode } from '@/ext/shared/money.ts';
+import type { CustomerInfo, ItemInfo, LocationInfo, SaleInfo, StockLevel } from '@/ext/shared/types.ts';
 
 import { mdiClose } from '@mdi/js';
 

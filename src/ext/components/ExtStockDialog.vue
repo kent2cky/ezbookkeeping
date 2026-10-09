@@ -39,9 +39,9 @@ import { ref, reactive, computed, watch } from 'vue';
 
 import { useExtI18n } from '@/ext/shared/i18n.ts';
 
-import api from '@/ext/api.ts';
-import { parseQty, parseSignedQty } from '@/ext/qty.ts';
-import type { ItemInfo, LocationInfo } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { parseQty, parseSignedQty } from '@/ext/shared/qty.ts';
+import type { ItemInfo, LocationInfo } from '@/ext/shared/types.ts';
 
 export type StockDialogMode = 'receive' | 'adjust' | 'transfer';
 

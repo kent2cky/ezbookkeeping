@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { toCsv } from '@/ext/csv.ts';
+import { toCsv } from '@/ext/shared/csv.ts';
 
 describe('toCsv', () => {
     test('plain rows', () => {

@@ -2,7 +2,7 @@ import type { NavigationGuardReturn, RouteRecordRaw } from 'vue-router';
 
 import { isUserLogined, isUserUnlocked } from '@/lib/userstate.ts';
 
-import { canUseBusinessFeatures } from '@/ext/features.ts';
+import { canUseBusinessFeatures } from '@/ext/shared/features.ts';
 
 import TeamPage from '@/ext/views/TeamPage.vue';
 import InventoryPage from '@/ext/views/InventoryPage.vue';

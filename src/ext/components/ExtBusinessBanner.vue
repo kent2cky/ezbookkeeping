@@ -23,7 +23,7 @@
 import ExtTermsGate from '@/ext/components/ExtTermsGate.vue';
 
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { installBusinessHeader, switchBusiness, useBusiness } from '@/ext/business.ts';
+import { installBusinessHeader, switchBusiness, useBusiness } from '@/ext/shared/business.ts';
 import { cameFromMobileApp, backToMobileApp } from '@/ext/shared/mobileBridge.ts';
 
 import { mdiAlertOutline, mdiArrowLeft } from '@mdi/js';

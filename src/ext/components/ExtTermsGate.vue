@@ -29,9 +29,9 @@ import { useExtI18n } from '@/ext/shared/i18n.ts';
 import { useRootStore } from '@/stores/index.ts';
 import { useSettingsStore } from '@/stores/setting.ts';
 
-import { describeError } from '@/ext/api.ts';
+import { describeError } from '@/ext/shared/api.ts';
 import { LEGAL_TERMS_URL, LEGAL_PRIVACY_URL } from '@/ext/shared/legalVersion.ts';
-import { useTerms } from '@/ext/terms.ts';
+import { useTerms } from '@/ext/shared/terms.ts';
 
 const { tt } = useExtI18n();
 const router = useRouter();
