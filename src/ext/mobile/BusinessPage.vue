@@ -15,16 +15,19 @@
             <f7-list-item link="/ext/inventory" :title="tt('Inventory')">
                 <template #media><f7-icon f7="cube_box"></f7-icon></template>
             </f7-list-item>
-            <f7-list-item link="#" :title="tt('Reports')" @click="openBusinessScreen('/ext/reports')" v-if="canManage">
+            <f7-list-item link="/ext/reports" :title="tt('Reports')" v-if="canManage">
                 <template #media><f7-icon f7="chart_bar"></f7-icon></template>
             </f7-list-item>
         </f7-list>
 
         <f7-list strong inset dividers :class="{ 'margin-top': !available }">
-            <f7-list-item link="#" :title="tt('Team')" @click="openBusinessScreen('/ext/team')" v-if="teamAvailable">
+            <f7-list-item link="/ext/team" :title="tt('Team')" v-if="teamAvailable">
                 <template #media><f7-icon f7="person_3"></f7-icon></template>
+                <template #after>
+                    <f7-badge color="red" v-if="invitations.length > 0">{{ invitations.length }}</f7-badge>
+                </template>
             </f7-list-item>
-            <f7-list-item link="#" :title="tt('Business Features')" @click="openBusinessScreen('/settings/business')">
+            <f7-list-item link="/ext/settings" :title="tt('Business Features')">
                 <template #media><f7-icon f7="building_2"></f7-icon></template>
             </f7-list-item>
         </f7-list>
@@ -33,13 +36,11 @@
 
 <script setup lang="ts">
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { openBusinessScreen } from '@/ext/shared/mobileBridge.ts';
 import { useBusiness } from '@/ext/shared/business.ts';
 import { useBusinessFeatures } from '@/ext/shared/features.ts';
 
-// Everything business in one list. Sell, Recent sales, Customers and Inventory are mobile screens; the others still open the desktop
-// screens (laid out for phones too, see src/ext/shared/mobileBridge.ts) until they get mobile versions.
+// Everything business in one list, opened from the Sell screen's menu
 const { tt } = useExtI18n();
-const { canManage } = useBusiness();
+const { canManage, invitations } = useBusiness();
 const { available, teamAvailable } = useBusinessFeatures();
 </script>
