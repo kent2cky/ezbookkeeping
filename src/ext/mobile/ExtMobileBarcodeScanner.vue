@@ -14,6 +14,7 @@
 
             <f7-block class="text-align-center">
                 <p class="text-color-red" v-if="problem">{{ problem }}</p>
+                <p v-else-if="single">{{ tt('Point the camera at a barcode.') }}</p>
                 <p v-else>{{ tt('Point the camera at a barcode. Every item scanned is added to the cart.') }}</p>
                 <p class="ext-scanner-last" v-if="lastMessage">{{ lastMessage }}</p>
             </f7-block>
@@ -29,9 +30,11 @@ import { createBarcodeReader } from './barcode.ts';
 
 // Full-screen camera view that keeps scanning until Done, so a pile of goods can be rung up one after another.
 // Each code is reported to the parent, which adds the matching item and says what happened (lastMessage).
+// With `single` it closes after the first code (finding one item, or filling in an item's code).
 const props = defineProps<{
     show: boolean;
     lastMessage?: string;
+    single?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -88,6 +91,11 @@ async function start(): Promise<void> {
                     lastCodeTime = now;
                     navigator.vibrate?.(60);
                     emit('detected', code);
+
+                    if (props.single) {
+                        emit('update:show', false);
+                        return;
+                    }
                 } else if (code) {
                     lastCodeTime = now;
                 }

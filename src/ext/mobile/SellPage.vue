@@ -17,7 +17,7 @@
         <div class="ext-shortcuts">
             <f7-button small tonal round href="/ext/sales">{{ tt('Recent sales') }}</f7-button>
             <f7-button small tonal round href="/ext/customers">{{ tt('Customers') }}</f7-button>
-            <f7-button small tonal round @click="openBusinessScreen('/ext/inventory')">{{ tt('Inventory') }}</f7-button>
+            <f7-button small tonal round href="/ext/inventory">{{ tt('Inventory') }}</f7-button>
             <f7-button small tonal round @click="openBusinessScreen('/ext/reports')" v-if="canManage">{{ tt('Reports') }}</f7-button>
             <f7-button small tonal round @click="openBusinessScreen('/ext/team')">{{ tt('Team') }}</f7-button>
         </div>
@@ -52,7 +52,7 @@
         <f7-block class="text-align-center" v-else-if="loaded">
             <p v-if="items.length < 1">{{ tt('No items yet. Add items on the Inventory page first.') }}</p>
             <p v-else>{{ tt('No items match your search.') }}</p>
-            <f7-button tonal round @click="openBusinessScreen('/ext/inventory')" v-if="items.length < 1">{{ tt('Inventory') }}</f7-button>
+            <f7-button tonal round href="/ext/inventory" v-if="items.length < 1">{{ tt('Inventory') }}</f7-button>
         </f7-block>
 
         <f7-block class="text-align-center" v-else>

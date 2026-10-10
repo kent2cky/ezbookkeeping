@@ -129,8 +129,4 @@ onMounted(() => refresh());
     font-weight: 600;
 }
 
-.ext-owes {
-    color: var(--f7-color-orange);
-    font-weight: 600;
-}
 </style>
