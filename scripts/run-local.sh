@@ -20,8 +20,8 @@ PORT="${PORT:-8080}"
 PID_FILE="data/server.pid"
 LOG_FILE="data/server.log"
 
-# the Go version this project needs may be installed in ~/sdk/go
-[ -x "$HOME/sdk/go/bin/go" ] && export PATH="$HOME/sdk/go/bin:$PATH" GOTOOLCHAIN=local
+# a Go installed in ~/sdk/go is used first; if it is older than go.mod asks for, Go fetches the right version itself
+[ -x "$HOME/sdk/go/bin/go" ] && export PATH="$HOME/sdk/go/bin:$PATH"
 
 load_env() {
     # read .env literally: passwords may contain characters (such as $ or ") that a shell would change

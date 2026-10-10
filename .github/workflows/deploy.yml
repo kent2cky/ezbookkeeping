@@ -79,8 +79,13 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ steps.ref.outputs.image }}
+          # BUILD_PIPELINE, CHECK_3RD_API and SKIP_TESTS used to be defaults written into the Dockerfile; they are passed
+          # here instead so the Dockerfile stays exactly upstream's and merges cleanly
           build-args: |
             RELEASE_BUILD=1
+            BUILD_PIPELINE=1
+            CHECK_3RD_API=0
+            SKIP_TESTS=1
             BUILD_UNIXTIME=${{ steps.ref.outputs.build_unix_time }}
             BUILD_DATE=${{ steps.ref.outputs.build_date }}
           cache-from: type=gha
