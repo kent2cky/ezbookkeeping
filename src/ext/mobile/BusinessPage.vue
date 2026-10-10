@@ -12,7 +12,7 @@
             <f7-list-item link="/ext/customers" :title="tt('Customers')">
                 <template #media><f7-icon f7="person_2"></f7-icon></template>
             </f7-list-item>
-            <f7-list-item link="#" :title="tt('Inventory')" @click="openBusinessScreen('/ext/inventory')">
+            <f7-list-item link="/ext/inventory" :title="tt('Inventory')">
                 <template #media><f7-icon f7="cube_box"></f7-icon></template>
             </f7-list-item>
             <f7-list-item link="#" :title="tt('Reports')" @click="openBusinessScreen('/ext/reports')" v-if="canManage">
@@ -37,7 +37,7 @@ import { openBusinessScreen } from '@/ext/shared/mobileBridge.ts';
 import { useBusiness } from '@/ext/shared/business.ts';
 import { useBusinessFeatures } from '@/ext/shared/features.ts';
 
-// Everything business in one list. Sell, Recent sales and Customers are mobile screens; the others still open the desktop
+// Everything business in one list. Sell, Recent sales, Customers and Inventory are mobile screens; the others still open the desktop
 // screens (laid out for phones too, see src/ext/shared/mobileBridge.ts) until they get mobile versions.
 const { tt } = useExtI18n();
 const { canManage } = useBusiness();

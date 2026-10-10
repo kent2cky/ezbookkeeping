@@ -439,7 +439,4 @@ async function submit(): Promise<void> {
     font-weight: 500;
 }
 
-.ext-checkout-help {
-    opacity: 0.85;
-}
 </style>

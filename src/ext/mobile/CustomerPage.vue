@@ -232,38 +232,3 @@ async function refresh(done?: () => void): Promise<void> {
 
 onMounted(() => refresh());
 </script>
-
-<style>
-.ext-balance {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 8px;
-}
-
-.ext-balance-label {
-    opacity: 0.7;
-}
-
-.ext-balance-amount {
-    font-size: 2em;
-    font-weight: 700;
-}
-
-.ext-balance-owed {
-    color: var(--f7-color-orange);
-}
-
-.ext-customer-actions .ext-action-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.ext-customer-actions .ext-action-row .button {
-    flex: 1 1 0;
-}
-
-.ext-muted {
-    opacity: 0.6;
-}
-</style>

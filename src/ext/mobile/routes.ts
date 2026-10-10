@@ -4,11 +4,16 @@ import { isUserLogined, isUserUnlocked } from '@/lib/userstate.ts';
 
 import { installBusinessHeader } from '@/ext/shared/business.ts';
 
+import './styles.css';
+
 import SellPage from './SellPage.vue';
 import SalesHistoryPage from './SalesHistoryPage.vue';
 import BusinessPage from './BusinessPage.vue';
 import CustomersPage from './CustomersPage.vue';
 import CustomerPage from './CustomerPage.vue';
+import InventoryPage from './InventoryPage.vue';
+import ItemPage from './ItemPage.vue';
+import LocationsPage from './LocationsPage.vue';
 
 // Every request of the mobile app carries the business being worked in, as in the desktop app, so staff and managers
 // see their employer's books here too. This file is loaded with the mobile router, before the app makes any request.
@@ -44,5 +49,8 @@ export const extMobileRoutes: Router.RouteParameters[] = [
     page('/ext/sales', SalesHistoryPage),
     page('/ext/customers', CustomersPage),
     page('/ext/customer', CustomerPage),
+    page('/ext/inventory', InventoryPage),
+    page('/ext/item', ItemPage),
+    page('/ext/locations', LocationsPage),
     page('/ext/business', BusinessPage)
 ];
