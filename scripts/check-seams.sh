@@ -3,7 +3,10 @@
 # Everything the ext module adds lives in new files, so upstream merges stay cheap.
 #
 # Usage: scripts/check-seams.sh [base-ref]     (default base: main)
-# Run it before opening a pull request and in CI.
+# Run it before opening a pull request and in CI. Compare with upstream to see everything this fork changes:
+#     git remote add upstream https://github.com/mayswind/ezbookkeeping.git && git fetch upstream main
+#     scripts/check-seams.sh upstream/main
+# (compared with our own main, an upstream merge would wrongly fail and drift already on main would go unseen)
 
 BASE="${1:-main}"
 

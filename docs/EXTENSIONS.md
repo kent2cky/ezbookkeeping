@@ -72,9 +72,15 @@ pkg/ext/
 | `src/views/mobile/SettingsPage.vue` | one import and one `<ext-mobile-business-list />` line (the "Business Features" entry of the mobile app), tagged `[ext]` |
 | `src/views/mobile/HomePage.vue` | one import and one `<ext-mobile-business-tab />` line (the Business tab of the bottom bar), tagged `[ext]` |
 | `src/router/mobile.ts` | one import and one `...extMobileRoutes` line (the Business page of the mobile app), tagged `[ext]` |
+| `src/views/desktop/LoginPage.vue`, `SignupPage.vue`, `users/DataManagementPage.vue`; `src/views/mobile/LoginPage.vue`, `SignupPage.vue` | the legal notice and the business part of Clear All Data, tagged `[ext]` |
+| `vite.config.ts` | the chunk rule for `src/ext/shared/`, tagged `[ext]` |
+| `conf/ezbookkeeping.ini` | **temporary:** SMTP on, sender address, API tokens on. The same settings are environment variables in `render.yaml`; once the Render dashboard is confirmed to set `EBK_MAIL_ENABLE_SMTP`, `EBK_MAIL_SMTP_HOST`, `EBK_MAIL_FROM_ADDRESS` and `EBK_SECURITY_ENABLE_API_TOKEN`, the file goes back to upstream's and leaves this list |
 
-`scripts/check-seams.sh [base]` fails if a branch changes any other upstream file or makes a seam grow past 40 lines.
-Run it before merging and in CI (`.github/workflows/ext-ci.yml`).
+Everything else matches upstream exactly, including `Dockerfile` (deploy.yml passes our build arguments), `go.mod` and `package-lock.json`.
+
+`scripts/check-seams.sh upstream/main` fails if this fork changes any other upstream file or makes a seam grow past 40 lines.
+CI runs it against upstream (`.github/workflows/ext-ci.yml`). Comparing with our own `main` instead would let drift that is already
+on `main` go unseen, and would wrongly fail a branch that merges upstream.
 
 ## 4. Owner / manager / staff
 
@@ -363,19 +369,23 @@ Code review findings were fixed in this branch (see git history); what remains:
 API smoke test against a running local server: `python3 scripts/ext-smoke.py` (77 checks: stock, credit sale, repayment, void rules, staff role limits, audit log). It creates throw-away users, so use a development database.
 
 ```sh
-export PATH=$HOME/sdk/go/bin:$PATH GOTOOLCHAIN=local     # Go 1.27.1 (see go.mod)
-go build ./...
+go build ./...                                           # an older Go fetches the version go.mod asks for by itself
 go test ./pkg/ext/...                                    # the ext tests (SQLite, temp files)
-scripts/check-seams.sh main                              # only registered seams may differ from upstream
+scripts/check-seams.sh upstream/main                     # only registered seams may differ from upstream
 ```
 
 ### Pulling upstream
 
 1. `git remote add upstream https://github.com/mayswind/ezbookkeeping.git` (once), `git config rerere.enabled true`.
 2. Keep `main` a clean mirror of upstream where possible, merge it into this branch, never rebase it.
-3. Likely conflicts are only the three seam files. Resolve by keeping upstream's code and re-adding the `[ext]` lines.
-4. After merging: `go build ./... && go test ./pkg/ext/... && scripts/check-seams.sh upstream/main`, then re-read the permission matrix for new upstream routes.
+3. Likely conflicts are only the seam files. Resolve by keeping upstream's code and re-adding the `[ext]` lines. Any other conflicting
+   upstream file means a change slipped in outside the seams: take upstream's version (as `src/lib/overview_layout.ts` was on
+   10 Oct 2026, when upstream had fixed the same test from the other side).
+4. After merging: `go build ./... && go test ./pkg/... && scripts/check-seams.sh upstream/main`, the frontend checks
+   (`npx vue-tsc --noEmit && npx vitest run && npm run build && python3 scripts/check-bundle.py dist`), then re-read the permission
+   matrix for new upstream routes. Upstream's live exchange-rate tests call the banks' websites and fail where those are unreachable.
 5. If upstream changes `GetCurrentUid`, the authorization middleware, or the order of `apiV1Route.Use(...)`, re-check that delegation still runs after authorization and before the routes.
+6. Last merge: upstream `9cb3a08e` (9 Oct 2026), merged 10 Oct 2026.
 
 ### Adding a feature to the module
 
