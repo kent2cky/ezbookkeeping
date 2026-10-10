@@ -288,7 +288,7 @@ Deployment: nothing to change; the next deploy creates the tables. Back up the d
 
 ## Mobile app
 
-An app installed on a phone (PWA) always opens the mobile app (Framework7), so the business features have mobile screens of their own, in `src/ext/mobile/`. The work is planned in phases; Phases 0 to 4 are done.
+An app installed on a phone (PWA) always opens the mobile app (Framework7), so the business features have mobile screens of their own, in `src/ext/mobile/`. Every business screen has a mobile version (Phases 0 to 5 are done).
 
 - **Shared code.** Everything both apps use lives in `src/ext/shared/` (api, types, business, features, money, qty, receipt, people, defaults, accounts, useReceipts, terms, csv, the receipt paper `ExtReceiptPaper.vue` and `receiptOutput.ts` for print, copy and share). The 'common' chunk rule in `vite.config.ts` covers that folder; code used by both apps anywhere else brings back the blank-page crash (`scripts/check-bundle.py` catches it).
 - **Business header.** `src/ext/mobile/routes.ts` calls `installBusinessHeader()` when the mobile router loads, so staff and managers see their employer's books on the phone as on the desktop.
@@ -313,7 +313,7 @@ An app installed on a phone (PWA) always opens the mobile app (Framework7), so t
 - **Shared styles** of these screens are in `src/ext/mobile/styles.css`, loaded with the routes.
 - **Barcode scanning** (`barcode.ts`, `ExtMobileBarcodeScanner.vue`): the camera keeps scanning until *Done*, adding the item whose SKU equals the code (spaces and letter case ignored). It uses the browser's own reader (`BarcodeDetector`): Android Chrome has it, iPhones do not, and there the scan button is hidden. No library is bundled, so `package.json` is untouched; adding one (for example `barcode-detector`, which brings a WebAssembly reader) would make scanning work on iPhones too.
 - **Toasts and dialogs** use `src/ext/mobile/ui.ts`, which shows text as given; the app's own helpers translate the text again, which would garble customer names or server messages.
-- **Nothing opens the desktop screens any more**; Phase 5 removes the hand-off (`mobileBridge.ts` and the *Back to the app* bar).
+- **No hand-off to the desktop screens**: the mobile app used to open them (with a *Back to the app* bar) until each had a mobile version; that bridge is gone. A person can still choose *Switch to Desktop Version* in Settings, as in upstream.
 
 ## 9. What is left (next steps, in order)
 
