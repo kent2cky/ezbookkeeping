@@ -288,7 +288,7 @@ Deployment: nothing to change; the next deploy creates the tables. Back up the d
 
 ## Mobile app
 
-An app installed on a phone (PWA) always opens the mobile app (Framework7), so the business features have mobile screens of their own, in `src/ext/mobile/`. The work is planned in phases; Phases 0 to 3 are done.
+An app installed on a phone (PWA) always opens the mobile app (Framework7), so the business features have mobile screens of their own, in `src/ext/mobile/`. The work is planned in phases; Phases 0 to 4 are done.
 
 - **Shared code.** Everything both apps use lives in `src/ext/shared/` (api, types, business, features, money, qty, receipt, people, defaults, accounts, useReceipts, terms, csv, the receipt paper `ExtReceiptPaper.vue` and `receiptOutput.ts` for print, copy and share). The 'common' chunk rule in `vite.config.ts` covers that folder; code used by both apps anywhere else brings back the blank-page crash (`scripts/check-bundle.py` catches it).
 - **Business header.** `src/ext/mobile/routes.ts` calls `installBusinessHeader()` when the mobile router loads, so staff and managers see their employer's books on the phone as on the desktop.
@@ -306,10 +306,14 @@ An app installed on a phone (PWA) always opens the mobile app (Framework7), so t
 - **Item form** (`ExtMobileItemPopup.vue`): name, SKU or barcode with a *Scan* button, unit, prices on the number pad, track stock, reorder level, and for a new item its *opening stock* (received at the default location in the same step).
 - **Stock changes** (`ExtMobileStockPopup.vue`): receive (cost per unit, opening stock), adjust as *Add stock / Remove stock* instead of a signed number, transfer between locations; the stock after the change is shown before saving, and removing more than is there is refused before it reaches the server.
 - **Locations** (`LocationsPage.vue`, `/ext/locations`): add, rename, delete (the server refuses a location that holds stock, or the last one).
+- **Reports** (`ReportsPage.vue`, `/ext/reports`, owners and managers): *Stock value* (at cost, at selling price, profit if all of it sells, per item), *Low stock* (with how much is short) and *Who owes* (total, debts by age, per customer); rows open the item or customer. *Share as spreadsheet* sends the same CSV as the desktop download through the share sheet (`shareOrSaveFile` in `src/ext/shared/csv.ts`), or downloads it where there is none.
+- **Team** (`TeamPage.vue`, `/ext/team`): invitations to accept or decline (also announced at the top of Sell), the businesses the person works in (*Work here* restarts the app in that business, *Leave*), and with the business features on their own team: invite by email as staff or manager, change roles, remove, and the activity log (`describeAction` in `src/ext/shared/audit.ts`, shared with the desktop).
+- **Business Features** (`BusinessSettingsPage.vue`, `/ext/settings`, also from Settings): the switch, receipt details, and the export of the business data (shared or saved as a ZIP).
+- **Downloads in the mobile app**: Framework7 takes over every link click for page changes, so the download link in `saveBlob` carries the `external` class; without it nothing was saved.
 - **Shared styles** of these screens are in `src/ext/mobile/styles.css`, loaded with the routes.
 - **Barcode scanning** (`barcode.ts`, `ExtMobileBarcodeScanner.vue`): the camera keeps scanning until *Done*, adding the item whose SKU equals the code (spaces and letter case ignored). It uses the browser's own reader (`BarcodeDetector`): Android Chrome has it, iPhones do not, and there the scan button is hidden. No library is bundled, so `package.json` is untouched; adding one (for example `barcode-detector`, which brings a WebAssembly reader) would make scanning work on iPhones too.
 - **Toasts and dialogs** use `src/ext/mobile/ui.ts`, which shows text as given; the app's own helpers translate the text again, which would garble customer names or server messages.
-- **Still on the desktop screens** (opened through `src/ext/shared/mobileBridge.ts`, with a *Back to the app* bar): Reports, Team and Business Features (Phase 4). Phase 5 removes the bridge once they all exist on mobile.
+- **Nothing opens the desktop screens any more**; Phase 5 removes the hand-off (`mobileBridge.ts` and the *Back to the app* bar).
 
 ## 9. What is left (next steps, in order)
 

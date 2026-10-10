@@ -18,9 +18,17 @@
             <f7-button small tonal round href="/ext/sales">{{ tt('Recent sales') }}</f7-button>
             <f7-button small tonal round href="/ext/customers">{{ tt('Customers') }}</f7-button>
             <f7-button small tonal round href="/ext/inventory">{{ tt('Inventory') }}</f7-button>
-            <f7-button small tonal round @click="openBusinessScreen('/ext/reports')" v-if="canManage">{{ tt('Reports') }}</f7-button>
-            <f7-button small tonal round @click="openBusinessScreen('/ext/team')">{{ tt('Team') }}</f7-button>
+            <f7-button small tonal round href="/ext/reports" v-if="canManage">{{ tt('Reports') }}</f7-button>
+            <f7-button small tonal round href="/ext/team">{{ tt('Team') }}</f7-button>
         </div>
+
+        <f7-list strong inset dividers class="no-margin-top margin-bottom-half" v-if="invitations.length > 0">
+            <f7-list-item link="/ext/team" class="ext-invitation-row"
+                          :title="tt('{name} invited you to work in their business', { name: invitations[0]?.name ?? '' })"
+                          :footer="tt('Accept or decline on the Team screen.')">
+                <template #media><f7-icon f7="envelope_badge"></f7-icon></template>
+            </f7-list-item>
+        </f7-list>
 
         <f7-list strong inset dividers class="no-margin-top margin-bottom-half" v-if="working.length > 1">
             <f7-list-item link="#" :title="tt('Working in')" :after="businessLabel(current)" @click="showBusinesses = true"></f7-list-item>
@@ -100,7 +108,6 @@ import { parseBigDecimal } from '@/lib/numeral.ts';
 import { getMobileVersionPath } from '@/lib/version.ts';
 
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { openBusinessScreen } from '@/ext/shared/mobileBridge.ts';
 import { switchBusiness, useBusiness } from '@/ext/shared/business.ts';
 import { useBusinessAccounts } from '@/ext/shared/accounts.ts';
 import { useReceipts } from '@/ext/shared/useReceipts.ts';
@@ -114,7 +121,7 @@ import { confirmAction, promptText, showError, showToast } from './ui.ts';
 // The mobile Sell screen: tap items to fill the cart, then Charge. Everything else (who pays, into which account)
 // is on the checkout sheet with the last choices remembered, so the usual cash sale is: tap, tap, Charge, Complete.
 const { tt, roleLabel, formatAmountToLocalizedNumeralsWithCurrency } = useExtI18n();
-const { working, current, workingForSomeoneElse } = useBusiness();
+const { working, current, invitations, workingForSomeoneElse } = useBusiness();
 const {
     items, locations, loaded, locationId, paymentAccountId, totals, itemCount, canManage,
     stockOf, inCart, leftOf, add, clearCart, load, refreshAfterSale
@@ -258,6 +265,11 @@ onMounted(async () => {
 .ext-shortcuts .button {
     flex: 0 0 auto;
     width: auto;
+}
+
+.ext-invitation-row .item-title {
+    white-space: normal;
+    font-weight: 600;
 }
 
 .ext-sell-items .item-title {

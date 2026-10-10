@@ -130,7 +130,7 @@
                                     <td>{{ formatTime(entry.time) }}</td>
                                     <td>{{ nameOf(entry.actorUid) }} <span class="text-medium-emphasis">({{ roleLabel(entry.role) }})</span></td>
                                     <td>
-                                        {{ describeAction(entry.action, entry.path) }}
+                                        {{ describeAction(tt, entry.action, entry.path) }}
                                         <span class="text-medium-emphasis" v-if="entry.entityId !== '0'">#{{ entry.entityId }}</span>
                                     </td>
                                     <td>
@@ -167,6 +167,7 @@ import { mdiCheckCircle, mdiCircleOutline } from '@mdi/js';
 import api from '@/ext/shared/api.ts';
 import { switchBusiness, useBusiness } from '@/ext/shared/business.ts';
 import { usePeople } from '@/ext/shared/people.ts';
+import { describeAction } from '@/ext/shared/audit.ts';
 import type { AuditEntry, BusinessInfo, BusinessRole, StaffInfo } from '@/ext/shared/types.ts';
 
 type ConfirmDialogType = InstanceType<typeof ConfirmDialog>;
@@ -201,33 +202,6 @@ function formatTime(unixTime: number): string {
 
 function nameOf(uid: string): string {
     return people.nameOf(uid) || uid;
-}
-
-// what the person did, in words; unknown actions are shown as written so nothing is hidden
-function describeAction(action: string, path: string): string {
-    switch (action) {
-        case 'sales.add': return tt('Recorded a sale');
-        case 'sales.void': return tt('Voided a sale');
-        case 'repayments.add': return tt('Recorded a repayment');
-        case 'customers.add': return tt('Added a customer');
-        case 'customers.modify': return tt('Changed a customer');
-        case 'customers.delete': return tt('Deleted a customer');
-        case 'items.add': return tt('Added an item');
-        case 'items.modify': return tt('Changed an item');
-        case 'items.delete': return tt('Deleted an item');
-        case 'stock.receive': return tt('Received stock');
-        case 'stock.adjust': return tt('Adjusted stock');
-        case 'stock.transfer': return tt('Transferred stock');
-        case 'locations.add': return tt('Added a location');
-        case 'locations.modify': return tt('Renamed a location');
-        case 'locations.delete': return tt('Deleted a location');
-        case 'transactions.add': return tt('Added a transaction');
-        case 'transactions.modify': return tt('Changed a transaction');
-        case 'transactions.delete': return tt('Deleted a transaction');
-        case 'accounts.add': return tt('Added an account');
-        case 'accounts.modify': return tt('Changed an account');
-        default: return (action || path).replace(/[._/]/g, ' ');
-    }
 }
 
 async function load(): Promise<void> {
