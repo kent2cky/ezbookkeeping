@@ -13,7 +13,8 @@
                                  :show-available-credit-for-credit-card="widget.settings['showAvailableCreditForCreditCard'] as boolean"
                                  v-else-if="widget.type === OverviewWidgetType.AccountBalanceList" />
 
-    <account-unreconciled-transactions-widget :loading="loading" :title="widgetTitle"
+    <account-unreconciled-transactions-widget :loading="loading" :editing="editing" :title="widgetTitle"
+                                              :hide-when-empty="widget.settings['hideWhenEmpty'] as boolean"
                                               :show-title="widget.settings['showTitle'] as boolean"
                                               :account-ids="widget.settings['accountIds'] as string[]"
                                               :item-count="widget.settings['itemCount'] as number"
@@ -63,6 +64,7 @@
                                  v-else-if="widget.type === OverviewWidgetType.TransactionCalendar" />
 
     <add-transaction-button-widget :widget-id="widget.id" @navigate="onNavigate"
+                                   :default-action="widget.settings['defaultAction'] as AddTransactionButtonDefaultAction"
                                    :light-background-color="widget.settings['lightBackgroundColor'] as ColorValue"
                                    :dark-background-color="widget.settings['darkBackgroundColor'] as ColorValue"
                                    v-else-if="widget.type === OverviewWidgetType.AddTransactionButton" />
@@ -87,7 +89,8 @@ import type { ColorValue } from '@/core/color.ts';
 import {
     type MobileOverviewWidgetLayout,
     OverviewWidgetType,
-    MobileOverviewWidgetNavigationType
+    MobileOverviewWidgetNavigationType,
+    AddTransactionButtonDefaultAction
 } from '@/core/overview_layout.ts';
 
 const props = defineProps<{
