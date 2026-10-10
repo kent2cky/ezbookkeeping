@@ -3,7 +3,10 @@
 # Everything the ext module adds lives in new files, so upstream merges stay cheap.
 #
 # Usage: scripts/check-seams.sh [base-ref]     (default base: main)
-# Run it before opening a pull request and in CI.
+# Run it before opening a pull request and in CI. Compare with upstream to see everything this fork changes:
+#     git remote add upstream https://github.com/mayswind/ezbookkeeping.git && git fetch upstream main
+#     scripts/check-seams.sh upstream/main
+# (compared with our own main, an upstream merge would wrongly fail and drift already on main would go unseen)
 
 BASE="${1:-main}"
 
@@ -22,6 +25,7 @@ src/views/desktop/SignupPage.vue
 src/views/mobile/LoginPage.vue
 src/views/mobile/SignupPage.vue
 src/views/mobile/SettingsPage.vue
+conf/ezbookkeeping.ini
 src/views/mobile/HomePage.vue
 src/router/mobile.ts
 "
