@@ -1,5 +1,5 @@
 <template>
-    <f7-page class="ext-inventory-page" ptr @ptr:refresh="refresh">
+    <f7-page class="ext-inventory-page" with-subnavbar ptr @ptr:refresh="refresh">
         <f7-navbar :back-link="tt('Back')">
             <f7-nav-title :title="tt('Inventory')"></f7-nav-title>
             <f7-nav-right>
