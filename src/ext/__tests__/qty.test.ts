@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { formatQty, parseQty, parseSignedQty, QTY_SCALE } from '@/ext/qty.ts';
+import { formatQty, parseQty, parseSignedQty, QTY_SCALE } from '@/ext/shared/qty.ts';
 
 describe('parseQty', () => {
     test('parses whole numbers and decimals into scaled integers', () => {

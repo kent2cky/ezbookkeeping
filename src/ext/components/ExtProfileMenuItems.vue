@@ -29,10 +29,10 @@
 import { onMounted } from 'vue';
 
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { installBusinessHeader, switchBusiness, useBusiness } from '@/ext/business.ts';
-import { useBusinessFeatures } from '@/ext/features.ts';
+import { installBusinessHeader, switchBusiness, useBusiness } from '@/ext/shared/business.ts';
+import { useBusinessFeatures } from '@/ext/shared/features.ts';
 import { LEGAL_TERMS_URL, LEGAL_PRIVACY_URL } from '@/ext/shared/legalVersion.ts';
-import type { BusinessInfo } from '@/ext/types.ts';
+import type { BusinessInfo } from '@/ext/shared/types.ts';
 
 import {
     mdiCheckCircle,

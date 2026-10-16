@@ -22,6 +22,7 @@
                      @taphold="openTransactionTemplatePopover">
                 <f7-icon f7="plus_square" class="ebk-tarbar-big-icon" aria-hidden="true"></f7-icon>
             </f7-link>
+            <ext-mobile-business-tab /> <!-- [ext] -->
             <f7-link class="link" href="/statistic/transaction" :aria-label="tt('Statistics')">
                 <f7-icon f7="chart_pie" aria-hidden="true"></f7-icon>
                 <span class="tabbar-label">{{ tt('Statistics') }}</span>
@@ -70,6 +71,7 @@
 <script setup lang="ts">
 import AIImageRecognitionSheet, { type AIImageRecognitionResult } from '@/components/mobile/AIImageRecognitionSheet.vue';
 import OverviewDashboard from './overview/OverviewDashboard.vue';
+import ExtMobileBusinessTab from '@/ext/mobile/ExtMobileBusinessTab.vue'; // [ext]
 
 import { ref, computed, useTemplateRef } from 'vue';
 import type { Router } from 'framework7/types';

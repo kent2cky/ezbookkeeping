@@ -52,9 +52,9 @@ import { ref, reactive, watch } from 'vue';
 
 import { useExtI18n } from '@/ext/shared/i18n.ts';
 
-import api from '@/ext/api.ts';
-import { formatQty, parseQty } from '@/ext/qty.ts';
-import type { ItemInfo } from '@/ext/types.ts';
+import api from '@/ext/shared/api.ts';
+import { formatQty, parseQty } from '@/ext/shared/qty.ts';
+import type { ItemInfo } from '@/ext/shared/types.ts';
 
 const props = defineProps<{
     show: boolean;

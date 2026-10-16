@@ -188,7 +188,7 @@
 <script setup lang="ts">
 import AboutDialog from '@/views/desktop/common/dialogs/AboutDialog.vue';
 import SnackBar from '@/components/desktop/SnackBar.vue';
-import { useBusinessFeatures } from '@/ext/features.ts'; // [ext]
+import { useBusinessFeatures } from '@/ext/shared/features.ts'; // [ext]
 import ExtTopNav from '@/ext/components/ExtTopNav.vue'; // [ext]
 import ExtProfileMenuItems from '@/ext/components/ExtProfileMenuItems.vue'; // [ext]
 import ExtBusinessBanner from '@/ext/components/ExtBusinessBanner.vue'; // [ext]

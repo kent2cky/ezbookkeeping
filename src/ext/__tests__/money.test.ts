@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { computeTotals, lineTotal } from '@/ext/money.ts';
+import { computeTotals, lineTotal } from '@/ext/shared/money.ts';
 
 describe('lineTotal (must match the Go implementation)', () => {
     test('whole quantities', () => {

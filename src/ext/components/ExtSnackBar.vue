@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { describeError } from '@/ext/api.ts';
+import { describeError } from '@/ext/shared/api.ts';
 
 const show = ref<boolean>(false);
 const message = ref<string>('');

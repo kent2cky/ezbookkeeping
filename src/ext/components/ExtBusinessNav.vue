@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { useBusiness } from '@/ext/business.ts';
+import { useBusiness } from '@/ext/shared/business.ts';
 
 import { mdiAccountCashOutline, mdiCartPlus, mdiChartBoxOutline, mdiPackageVariantClosed } from '@mdi/js';
 

@@ -1,22 +1,7 @@
 <template>
     <f7-block-title class="margin-top">{{ tt('Business') }}</f7-block-title>
-    <f7-block class="no-margin-vertical">
-        <f7-button large fill round icon-f7="cart_badge_plus" :text="tt('Sell')" @click="openBusinessScreen('/ext/sales')"></f7-button>
-    </f7-block>
     <f7-list strong inset dividers>
-        <f7-list-item link="#" :title="tt('Customers')" @click="openBusinessScreen('/ext/customers')">
-            <template #media><f7-icon f7="person_2"></f7-icon></template>
-        </f7-list-item>
-        <f7-list-item link="#" :title="tt('Inventory')" @click="openBusinessScreen('/ext/inventory')">
-            <template #media><f7-icon f7="cube_box"></f7-icon></template>
-        </f7-list-item>
-        <f7-list-item link="#" :title="tt('Reports')" @click="openBusinessScreen('/ext/reports')">
-            <template #media><f7-icon f7="chart_bar"></f7-icon></template>
-        </f7-list-item>
-        <f7-list-item link="#" :title="tt('Team')" @click="openBusinessScreen('/ext/team')">
-            <template #media><f7-icon f7="person_3"></f7-icon></template>
-        </f7-list-item>
-        <f7-list-item link="#" :title="tt('Business Features')" @click="openBusinessScreen('/settings/business')">
+        <f7-list-item link="/ext/settings" :title="tt('Business Features')">
             <template #media><f7-icon f7="building_2"></f7-icon></template>
         </f7-list-item>
     </f7-list>
@@ -24,9 +9,8 @@
 
 <script setup lang="ts">
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { openBusinessScreen } from '@/ext/shared/mobileBridge.ts';
 
-// Shown in the mobile app's Settings. The screens open in the desktop app (see mobileBridge.ts); while the business
-// features are off, the desktop app sends the person to the Business Features setting where they can be turned on.
+// Shown in the mobile app's Settings: where the business features are switched on. Once they are, the home page's
+// Sell tab (ExtMobileBusinessTab.vue) leads to selling, customers, inventory, reports and the team.
 const { tt } = useExtI18n();
 </script>

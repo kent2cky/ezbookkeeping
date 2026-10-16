@@ -21,8 +21,8 @@
 import { onMounted } from 'vue';
 
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import { installBusinessHeader, useBusiness } from '@/ext/business.ts';
-import { useBusinessFeatures } from '@/ext/features.ts';
+import { installBusinessHeader, useBusiness } from '@/ext/shared/business.ts';
+import { useBusinessFeatures } from '@/ext/shared/features.ts';
 
 import { mdiCartPlus, mdiStorefrontOutline } from '@mdi/js';
 

@@ -77,10 +77,10 @@ import ExtSnackBar from '@/ext/components/ExtSnackBar.vue';
 import { ref, reactive, watch, onMounted, useTemplateRef } from 'vue';
 
 import { useExtI18n } from '@/ext/shared/i18n.ts';
-import api from '@/ext/api.ts';
-import { saveBlob } from '@/ext/csv.ts';
-import { useBusiness } from '@/ext/business.ts';
-import { useBusinessFeatures } from '@/ext/features.ts';
+import api from '@/ext/shared/api.ts';
+import { saveBlob } from '@/ext/shared/csv.ts';
+import { useBusiness } from '@/ext/shared/business.ts';
+import { useBusinessFeatures } from '@/ext/shared/features.ts';
 
 type SnackBarType = InstanceType<typeof ExtSnackBar>;
 

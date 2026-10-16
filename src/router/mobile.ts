@@ -2,6 +2,8 @@ import type { Router } from 'framework7/types';
 
 import { isUserLogined, isUserUnlocked } from '@/lib/userstate.ts';
 
+import { extMobileRoutes } from '@/ext/mobile/routes.ts'; // [ext]
+
 import HomePage from '@/views/mobile/HomePage.vue';
 import LoginPage from '@/views/mobile/LoginPage.vue';
 import SignUpPage from '@/views/mobile/SignupPage.vue';
@@ -368,6 +370,7 @@ const routes: Router.RouteParameters[] = [
         async: asyncResolve(TransactionEditPage),
         beforeEnter: [checkLogin]
     },
+    ...extMobileRoutes, // [ext]
     {
         path: '(.*)',
         redirect: '/'

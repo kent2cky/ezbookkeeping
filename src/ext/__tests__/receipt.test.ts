@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
-import { buildRepaymentReceipt, buildSaleReceipt, receiptToText, type ReceiptFormat } from '@/ext/receipt.ts';
-import type { BusinessProfileInfo, CustomerInfo, ItemInfo, RepaymentInfo, SaleInfo } from '@/ext/types.ts';
+import { buildRepaymentReceipt, buildSaleReceipt, receiptToText, type ReceiptFormat } from '@/ext/shared/receipt.ts';
+import type { BusinessProfileInfo, CustomerInfo, ItemInfo, RepaymentInfo, SaleInfo } from '@/ext/shared/types.ts';
 
 // plain English and whole-number money keep the expectations readable
 const fmt: ReceiptFormat = {
