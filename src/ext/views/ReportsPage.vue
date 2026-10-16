@@ -1,5 +1,8 @@
 <template>
     <main-page-layout>
+        <template #nav-items>
+            <ext-business-nav />
+        </template>
         <template #content>
             <v-row class="match-height">
                 <v-col cols="12" v-if="!canManage">
@@ -169,6 +172,7 @@
 </template>
 
 <script setup lang="ts">
+import ExtBusinessNav from '@/ext/components/ExtBusinessNav.vue';
 import ExtSnackBar from '@/ext/components/ExtSnackBar.vue';
 
 import { ref, computed, watch, onMounted, useTemplateRef } from 'vue';

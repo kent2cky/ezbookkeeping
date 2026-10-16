@@ -93,10 +93,12 @@
 
                                 <router-link class="d-inline-flex align-center" to="/transaction/list?pageType=0&dateType=7"
                                              v-if="showAddTransactionButtonInDesktopNavbar">
-                                    <v-btn class="add-transaction-button ms-2" color="primary" density="comfortable" variant="flat"
+                                    <v-btn class="add-transaction-button ms-2" density="comfortable"
+                                           :color="businessFeaturesAvailable ? 'default' : 'primary'"
+                                           :variant="businessFeaturesAvailable ? 'text' : 'flat'"
                                            :aria-label="tt('Add Transaction')" :icon="true"
                                            @click="showAddDialogInTransactionListPage">
-                                        <v-icon :icon="mdiPlus" size="22" />
+                                        <v-icon :icon="mdiNotePlusOutline" size="22" />
                                         <v-tooltip activator="parent">{{ tt('Add Transaction') }}</v-tooltip>
                                     </v-btn>
                                 </router-link>
@@ -186,6 +188,7 @@
 <script setup lang="ts">
 import AboutDialog from '@/views/desktop/common/dialogs/AboutDialog.vue';
 import SnackBar from '@/components/desktop/SnackBar.vue';
+import { useBusinessFeatures } from '@/ext/features.ts'; // [ext]
 import ExtTopNav from '@/ext/components/ExtTopNav.vue'; // [ext]
 import ExtProfileMenuItems from '@/ext/components/ExtProfileMenuItems.vue'; // [ext]
 import ExtBusinessBanner from '@/ext/components/ExtBusinessBanner.vue'; // [ext]
@@ -219,7 +222,7 @@ import {
     mdiChartPieOutline,
     mdiCompass,
     mdiCompassOutline,
-    mdiPlus,
+    mdiNotePlusOutline,
     mdiCellphone,
     mdiThemeLightDark,
     mdiWeatherSunny,
@@ -244,6 +247,7 @@ const route = useRoute();
 const router = useRouter();
 
 const { tt, initLocale } = useI18n();
+const { available: businessFeaturesAvailable } = useBusinessFeatures(); // [ext]
 
 const rootStore = useRootStore();
 const settingsStore = useSettingsStore();

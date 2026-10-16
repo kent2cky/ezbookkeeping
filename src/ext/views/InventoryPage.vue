@@ -1,5 +1,8 @@
 <template>
     <main-page-layout>
+        <template #nav-items>
+            <ext-business-nav />
+        </template>
         <template #content>
             <v-row class="match-height">
                 <v-col cols="12">
@@ -90,6 +93,7 @@
 </template>
 
 <script setup lang="ts">
+import ExtBusinessNav from '@/ext/components/ExtBusinessNav.vue';
 import ConfirmDialog from '@/components/desktop/ConfirmDialog.vue';
 import ExtSnackBar from '@/ext/components/ExtSnackBar.vue';
 import ExtItemDialog from '@/ext/components/ExtItemDialog.vue';

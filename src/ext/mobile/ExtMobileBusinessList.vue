@@ -1,9 +1,9 @@
 <template>
     <f7-block-title class="margin-top">{{ tt('Business') }}</f7-block-title>
+    <f7-block class="no-margin-vertical">
+        <f7-button large fill round icon-f7="cart_badge_plus" :text="tt('Sell')" @click="openBusinessScreen('/ext/sales')"></f7-button>
+    </f7-block>
     <f7-list strong inset dividers>
-        <f7-list-item link="#" :title="tt('Sales')" @click="openBusinessScreen('/ext/sales')">
-            <template #media><f7-icon f7="cart"></f7-icon></template>
-        </f7-list-item>
         <f7-list-item link="#" :title="tt('Customers')" @click="openBusinessScreen('/ext/customers')">
             <template #media><f7-icon f7="person_2"></f7-icon></template>
         </f7-list-item>
