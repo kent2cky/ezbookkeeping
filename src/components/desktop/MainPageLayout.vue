@@ -1,8 +1,7 @@
 <template>
-    <div class="layout-wrapper layout-nav-type-vertical"
-         :class="{ 'layout-overlay-nav': lgAndDown }">
-        <div class="layout-vertical-nav" :class="{'visible': showVerticalOverlayMenu, 'overlay-nav': lgAndDown}"
-             v-if="!noNavbar">
+    <div class="layout-wrapper layout-nav-type-vertical" :class="{ 'layout-overlay-nav': lgAndDown }">
+        <div class="layout-vertical-nav" :class="{ 'visible': showVerticalOverlayMenu, 'overlay-nav': lgAndDown }"
+            v-if="!noNavbar">
             <div class="nav-header">
                 <router-link to="/" class="app-logo d-flex align-center gap-x-3">
                     <div class="d-flex">
@@ -21,9 +20,8 @@
             <div class="layout-navbar navbar-blur">
                 <div class="navbar-content-container">
                     <div class="navbar-content d-flex h-100 align-center">
-                        <v-btn class="ms-n2 d-lg-none" color="default" variant="text"
-                               :aria-label="tt('Open Menu')"
-                               :icon="true" @click="showVerticalOverlayMenu = true" v-if="!noNavbar">
+                        <v-btn class="ms-n2 d-lg-none" color="default" variant="text" :aria-label="tt('Open Menu')"
+                            :icon="true" @click="showVerticalOverlayMenu = true" v-if="!noNavbar">
                             <v-icon :icon="mdiMenu" size="24" />
                         </v-btn>
                         <div class="app-logo d-flex align-center gap-x-3 me-3" v-if="noNavbar">
@@ -33,108 +31,119 @@
                             <h1 class="app-title d-none d-md-inline-flex">{{ tt('global.app.title') }}</h1>
                         </div>
                         <div class="app-top-toolbar d-inline-flex"
-                             :class="{ 'app-top-toolbar-without-navbar': noNavbar }">
+                            :class="{ 'app-top-toolbar-without-navbar': noNavbar }">
                             <slot name="top-toolbar">
                                 <router-link to="/" :aria-current="isTopNavigationActive('/') ? 'page' : undefined">
                                     <v-btn class="top-navigation-button" density="comfortable" variant="text"
-                                           :aria-label="tt('Overview')" :icon="true"
-                                           :active="isTopNavigationActive('/')"
-                                           :color="isTopNavigationActive('/') ? 'primary' : 'default'">
-                                        <v-icon :icon="isTopNavigationActive('/') ? mdiHome : mdiHomeOutline" size="24" />
+                                        :aria-label="tt('Overview')" :icon="true" :active="isTopNavigationActive('/')"
+                                        :color="isTopNavigationActive('/') ? 'primary' : 'default'">
+                                        <v-icon :icon="isTopNavigationActive('/') ? mdiHome : mdiHomeOutline"
+                                            size="24" />
                                         <v-tooltip activator="parent">{{ tt('Overview') }}</v-tooltip>
                                     </v-btn>
                                 </router-link>
 
                                 <router-link to="/transaction/list?pageType=0&dateType=7"
-                                             :aria-current="isTopNavigationActive('/transaction/list') ? 'page' : undefined">
+                                    :aria-current="isTopNavigationActive('/transaction/list') ? 'page' : undefined">
                                     <v-btn class="top-navigation-button ms-1" density="comfortable" variant="text"
-                                           :aria-label="tt('Transaction Details')" :icon="true"
-                                           :active="isTopNavigationActive('/transaction/list')"
-                                           :color="isTopNavigationActive('/transaction/list') ? 'primary' : 'default'">
-                                        <v-icon :icon="isTopNavigationActive('/transaction/list') ? mdiListBox : mdiListBoxOutline" size="24" />
+                                        :aria-label="tt('Transaction Details')" :icon="true"
+                                        :active="isTopNavigationActive('/transaction/list')"
+                                        :color="isTopNavigationActive('/transaction/list') ? 'primary' : 'default'">
+                                        <v-icon
+                                            :icon="isTopNavigationActive('/transaction/list') ? mdiListBox : mdiListBoxOutline"
+                                            size="24" />
                                         <v-tooltip activator="parent">{{ tt('Transaction Details') }}</v-tooltip>
                                     </v-btn>
                                 </router-link>
 
                                 <router-link to="/statistics/transaction"
-                                             :aria-current="isTopNavigationActive('/statistics/transaction') ? 'page' : undefined">
+                                    :aria-current="isTopNavigationActive('/statistics/transaction') ? 'page' : undefined">
                                     <v-btn class="top-navigation-button ms-1" density="comfortable" variant="text"
-                                           :aria-label="tt('Statistics & Analysis')" :icon="true"
-                                           :active="isTopNavigationActive('/statistics/transaction')"
-                                           :color="isTopNavigationActive('/statistics/transaction') ? 'primary' : 'default'">
-                                        <v-icon :icon="isTopNavigationActive('/statistics/transaction') ? mdiChartPie : mdiChartPieOutline" size="24" />
+                                        :aria-label="tt('Statistics & Analysis')" :icon="true"
+                                        :active="isTopNavigationActive('/statistics/transaction')"
+                                        :color="isTopNavigationActive('/statistics/transaction') ? 'primary' : 'default'">
+                                        <v-icon
+                                            :icon="isTopNavigationActive('/statistics/transaction') ? mdiChartPie : mdiChartPieOutline"
+                                            size="24" />
                                         <v-tooltip activator="parent">{{ tt('Statistics & Analysis') }}</v-tooltip>
                                     </v-btn>
                                 </router-link>
 
                                 <router-link to="/insights/explorer"
-                                             :aria-current="isTopNavigationActive('/insights/explorer') ? 'page' : undefined">
+                                    :aria-current="isTopNavigationActive('/insights/explorer') ? 'page' : undefined">
                                     <v-btn class="top-navigation-button ms-1" density="comfortable" variant="text"
-                                           :aria-label="tt('Insights Explorer')" :icon="true"
-                                           :active="isTopNavigationActive('/insights/explorer')"
-                                           :color="isTopNavigationActive('/insights/explorer') ? 'primary' : 'default'">
-                                        <v-icon :icon="isTopNavigationActive('/insights/explorer') ? mdiCompass : mdiCompassOutline" size="24" />
+                                        :aria-label="tt('Insights Explorer')" :icon="true"
+                                        :active="isTopNavigationActive('/insights/explorer')"
+                                        :color="isTopNavigationActive('/insights/explorer') ? 'primary' : 'default'">
+                                        <v-icon
+                                            :icon="isTopNavigationActive('/insights/explorer') ? mdiCompass : mdiCompassOutline"
+                                            size="24" />
                                         <v-tooltip activator="parent">{{ tt('Insights Explorer') }}</v-tooltip>
                                     </v-btn>
                                 </router-link>
 
                                 <router-link to="/account/list"
-                                             :aria-current="isTopNavigationActive('/account/list') ? 'page' : undefined">
+                                    :aria-current="isTopNavigationActive('/account/list') ? 'page' : undefined">
                                     <v-btn class="top-navigation-button ms-1" density="comfortable" variant="text"
-                                           :aria-label="tt('Accounts')" :icon="true"
-                                           :active="isTopNavigationActive('/account/list')"
-                                           :color="isTopNavigationActive('/account/list') ? 'primary' : 'default'">
-                                        <v-icon :icon="isTopNavigationActive('/account/list') ? mdiCreditCard : mdiCreditCardOutline" size="24" />
+                                        :aria-label="tt('Accounts')" :icon="true"
+                                        :active="isTopNavigationActive('/account/list')"
+                                        :color="isTopNavigationActive('/account/list') ? 'primary' : 'default'">
+                                        <v-icon
+                                            :icon="isTopNavigationActive('/account/list') ? mdiCreditCard : mdiCreditCardOutline"
+                                            size="24" />
                                         <v-tooltip activator="parent">{{ tt('Accounts') }}</v-tooltip>
+                                    </v-btn>
+                                </router-link>
+                                <router-link class="d-inline-flex align-center"
+                                    to="/transaction/list?pageType=0&dateType=7"
+                                    v-if="showAddTransactionButtonInDesktopNavbar">
+                                    <v-btn class="add-transaction-button ms-2" density="comfortable"
+                                        :color="businessFeaturesAvailable ? 'default' : 'primary'"
+                                        :variant="businessFeaturesAvailable ? 'text' : 'flat'"
+                                        :aria-label="tt('Add Transaction')" :icon="true"
+                                        @click="showAddDialogInTransactionListPage">
+                                        <v-icon :icon="mdiPlus" size="22" />
+                                        <v-tooltip activator="parent">{{ tt('Add Transaction') }}</v-tooltip>
                                     </v-btn>
                                 </router-link>
 
                                 <ext-top-nav /> <!-- [ext] -->
-
-                                <router-link class="d-inline-flex align-center" to="/transaction/list?pageType=0&dateType=7"
-                                             v-if="showAddTransactionButtonInDesktopNavbar">
-                                    <v-btn class="add-transaction-button ms-2" density="comfortable"
-                                           :color="businessFeaturesAvailable ? 'default' : 'primary'"
-                                           :variant="businessFeaturesAvailable ? 'text' : 'flat'"
-                                           :aria-label="tt('Add Transaction')" :icon="true"
-                                           @click="showAddDialogInTransactionListPage">
-                                        <v-icon :icon="mdiNotePlusOutline" size="22" />
-                                        <v-tooltip activator="parent">{{ tt('Add Transaction') }}</v-tooltip>
-                                    </v-btn>
-                                </router-link>
                             </slot>
                         </div>
                         <v-spacer />
                         <v-btn class="ms-2" color="primary" variant="text" density="comfortable"
-                               :aria-label="tt('Use on Mobile Device')" :icon="true"
-                               @click="showMobileQrCode = true">
+                            :aria-label="tt('Use on Mobile Device')" :icon="true" @click="showMobileQrCode = true">
                             <v-icon :icon="mdiCellphone" size="24" />
                             <v-tooltip activator="parent">{{ tt('Use on Mobile Device') }}</v-tooltip>
                         </v-btn>
                         <v-btn class="ms-2" color="primary" variant="text" density="comfortable"
-                               :aria-label="tt('Theme')" :icon="true"
-                               @click="(currentTheme === 'light' ? currentTheme = 'dark' : (currentTheme === 'dark' ? currentTheme = 'auto' : currentTheme = 'light'))">
-                            <v-icon :icon="(currentTheme === 'light' ? mdiWeatherSunny : (currentTheme === 'dark' ? mdiWeatherNight : mdiThemeLightDark))" size="24" />
+                            :aria-label="tt('Theme')" :icon="true"
+                            @click="(currentTheme === 'light' ? currentTheme = 'dark' : (currentTheme === 'dark' ? currentTheme = 'auto' : currentTheme = 'light'))">
+                            <v-icon
+                                :icon="(currentTheme === 'light' ? mdiWeatherSunny : (currentTheme === 'dark' ? mdiWeatherNight : mdiThemeLightDark))"
+                                size="24" />
                         </v-btn>
                         <v-avatar class="cursor-pointer ms-3" variant="tonal" :aria-label="tt('Settings')"
-                                  :color="currentUserAvatar ? 'rgba(0,0,0,0)' : 'primary'">
-                            <v-icon :color="currentUserAvatar ? 'primary' : undefined" :icon="mdiAccount"/>
-                            <span class="user-avatar-image" :style="currentUserAvatarStyle" v-if="currentUserAvatar"></span>
+                            :color="currentUserAvatar ? 'rgba(0,0,0,0)' : 'primary'">
+                            <v-icon :color="currentUserAvatar ? 'primary' : undefined" :icon="mdiAccount" />
+                            <span class="user-avatar-image" :style="currentUserAvatarStyle"
+                                v-if="currentUserAvatar"></span>
                             <v-menu activator="parent" width="230" location="bottom end" offset="14px">
                                 <v-list>
                                     <v-list-item>
                                         <template #prepend>
                                             <v-list-item-action>
                                                 <v-avatar variant="tonal"
-                                                          :color="currentUserAvatar ? 'rgba(0,0,0,0)' : 'primary'">
+                                                    :color="currentUserAvatar ? 'rgba(0,0,0,0)' : 'primary'">
                                                     <v-img :src="currentUserAvatar" v-if="currentUserAvatar">
                                                         <template #placeholder>
-                                                            <div class="d-flex align-center justify-center bg-light-primary">
-                                                                <v-icon color="primary" :icon="mdiAccount"/>
+                                                            <div
+                                                                class="d-flex align-center justify-center bg-light-primary">
+                                                                <v-icon color="primary" :icon="mdiAccount" />
                                                             </div>
                                                         </template>
                                                     </v-img>
-                                                    <v-icon :icon="mdiAccount" v-else-if="!currentUserAvatar"/>
+                                                    <v-icon :icon="mdiAccount" v-else-if="!currentUserAvatar" />
                                                 </v-avatar>
                                             </v-list-item-action>
                                         </template>
@@ -143,22 +152,16 @@
                                         </v-list-item-title>
                                     </v-list-item>
                                     <ext-profile-menu-items /> <!-- [ext] -->
-                                    <v-divider class="my-1"/>
-                                    <v-list-item :prepend-icon="mdiCogOutline"
-                                                 :title="tt('Settings')"
-                                                 to="/settings/preferences"></v-list-item>
-                                    <v-list-item :prepend-icon="mdiInformationOutline"
-                                                 :title="tt('About')"
-                                                 @click="showAboutDialog = true"></v-list-item>
-                                    <v-divider class="my-1"/>
-                                    <v-list-item :prepend-icon="mdiLockOutline"
-                                                 :title="tt('Lock Application')"
-                                                 v-if="isEnableApplicationLock"
-                                                 @click="lock"></v-list-item>
-                                    <v-list-item :disabled="logouting"
-                                                 :prepend-icon="mdiLogout"
-                                                 :title="tt('Log Out')"
-                                                 @click="logout"></v-list-item>
+                                    <v-divider class="my-1" />
+                                    <v-list-item :prepend-icon="mdiCogOutline" :title="tt('Settings')"
+                                        to="/settings/preferences"></v-list-item>
+                                    <v-list-item :prepend-icon="mdiInformationOutline" :title="tt('About')"
+                                        @click="showAboutDialog = true"></v-list-item>
+                                    <v-divider class="my-1" />
+                                    <v-list-item :prepend-icon="mdiLockOutline" :title="tt('Lock Application')"
+                                        v-if="isEnableApplicationLock" @click="lock"></v-list-item>
+                                    <v-list-item :disabled="logouting" :prepend-icon="mdiLogout" :title="tt('Log Out')"
+                                        @click="logout"></v-list-item>
                                 </v-list>
                             </v-menu>
                         </v-avatar>
@@ -172,7 +175,9 @@
             </div>
         </div>
 
-        <div class="layout-overlay" :class="{ 'visible': showVerticalOverlayMenu }" @click="showVerticalOverlayMenu = false"></div>
+        <div class="layout-overlay" :class="{ 'visible': showVerticalOverlayMenu }"
+            @click="showVerticalOverlayMenu = false">
+        </div>
 
         <v-overlay class="justify-center align-center" :persistent="true" v-model="showLoading">
             <v-progress-circular indeterminate></v-progress-circular>
@@ -222,7 +227,7 @@ import {
     mdiChartPieOutline,
     mdiCompass,
     mdiCompassOutline,
-    mdiNotePlusOutline,
+    mdiPlus,
     mdiCellphone,
     mdiThemeLightDark,
     mdiWeatherSunny,

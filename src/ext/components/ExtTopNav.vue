@@ -3,7 +3,7 @@
         <!-- the prominent button of the top menu; the other business screens are in the sidebar of the business pages -->
         <router-link class="d-inline-flex align-center" to="/ext/sales">
             <v-btn class="sell-button ms-2" color="primary" density="comfortable" variant="flat"
-                   :aria-label="tt('Sell')" :icon="true">
+                :aria-label="tt('Sell')" :icon="true">
                 <v-icon :icon="mdiCartPlus" size="22" />
                 <v-tooltip activator="parent">{{ tt('Sell') }}</v-tooltip>
             </v-btn>
@@ -12,7 +12,7 @@
 
     <!-- always visible for people who belong to other businesses, so nobody forgets which one they are in -->
     <v-chip class="ms-3" size="small" label :color="workingForSomeoneElse ? 'warning' : undefined"
-            :prepend-icon="mdiStorefrontOutline" v-if="current && working.length > 1">
+        :prepend-icon="mdiStorefrontOutline" v-if="current && working.length > 1">
         {{ tt('ext.chip', { name: current.name, role: roleLabel(current.role) }) }}
     </v-chip>
 </template>
