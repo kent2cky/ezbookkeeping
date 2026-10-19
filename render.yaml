@@ -4,7 +4,7 @@ services:
     runtime: image
     plan: free
     image:
-      url: ghcr.io/kent2cky/ezbookkeeping-render:latest
+      url: ghcr.io/kent2cky/smartcore-books-render:latest
     healthCheckPath: /
     domains:
       - book.vmerlabs.com
