@@ -81,6 +81,7 @@ jobs:
           tags: ${{ steps.ref.outputs.image }}
           build-args: |
             RELEASE_BUILD=1
+            BUILD_NODE_OPTIONS=--max-old-space-size=5120
             BUILD_UNIXTIME=${{ steps.ref.outputs.build_unix_time }}
             BUILD_DATE=${{ steps.ref.outputs.build_date }}
           cache-from: type=gha
