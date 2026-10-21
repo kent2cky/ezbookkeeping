@@ -13,7 +13,8 @@ import {
     type MobileOverviewLayout,
     type MobileOverviewWidgetDefinition,
     OverviewWidgetType,
-    OverviewWidgetDataRequirement
+    OverviewWidgetDataRequirement,
+    AddTransactionButtonDefaultAction
 } from '@/core/overview_layout.ts';
 
 import {
@@ -900,13 +901,19 @@ export const MOBILE_OVERVIEW_WIDGET_DEFINITIONS: PartialRecord<OverviewWidgetTyp
                         value: 'transactionCount'
                     }
                 ]
+            },
+            {
+                settingType: 'switch',
+                settingName: 'hideWhenEmpty',
+                displayName: 'Hide when there are no accounts with unreconciled transactions'
             }
         ],
         defaultSettings: {
             showTitle: false,
             accountIds: [],
             itemCount: 4,
-            sortBy: 'displayOrder'
+            sortBy: 'displayOrder',
+            hideWhenEmpty: false
         },
         dataRequirements: [
             OverviewWidgetDataRequirement.Accounts,
@@ -1195,9 +1202,31 @@ export const MOBILE_OVERVIEW_WIDGET_DEFINITIONS: PartialRecord<OverviewWidgetTyp
         type: OverviewWidgetType.AddTransactionButton,
         name: 'Add Transaction Button',
         supportsSettings: [
+            {
+                settingType: 'customSelect',
+                settingName: 'defaultAction',
+                displayName: 'Default Action',
+                selectValues: [
+                    {
+                        name: 'Add Transaction',
+                        value: AddTransactionButtonDefaultAction.AddTransaction
+                    },
+                    {
+                        name: 'AI Clipboard Text Recognition',
+                        value: AddTransactionButtonDefaultAction.AIClipboardTextRecognition,
+                        disabled: (settings, context) => !context.aiTextRecognitionEnabled
+                    },
+                    {
+                        name: 'AI Image Recognition',
+                        value: AddTransactionButtonDefaultAction.AIImageRecognition,
+                        disabled: (settings, context) => !context.aiImageRecognitionEnabled
+                    }
+                ]
+            },
             ...WIDGET_BACKGROUND_COLOR_SETTINGS
         ],
         defaultSettings: {
+            defaultAction: AddTransactionButtonDefaultAction.AddTransaction,
             lightBackgroundColor: DEFAULT_MOBILE_ADD_TRANSACTION_BUTTON_BACKGROUND_COLOR,
             darkBackgroundColor: DEFAULT_MOBILE_ADD_TRANSACTION_BUTTON_BACKGROUND_COLOR
         },

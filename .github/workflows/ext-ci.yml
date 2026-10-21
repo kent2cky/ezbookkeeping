@@ -19,10 +19,13 @@ jobs:
         with:
           go-version: '1.27.1'
 
-      - name: Seam check
+      # Compared with upstream rather than our own main: that finds every upstream file this fork changes, including drift
+      # that is already on main, and an upstream merge (which changes many upstream files) passes as it should
+      - name: Seam check against upstream
         run: |
-          BASE="origin/${{ github.base_ref || 'main' }}"
-          scripts/check-seams.sh "$BASE"
+          git remote add upstream https://github.com/mayswind/ezbookkeeping.git
+          git fetch --no-tags upstream main
+          scripts/check-seams.sh upstream/main
 
       - uses: actions/setup-node@v6
         with:
