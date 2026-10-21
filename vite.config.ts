@@ -159,7 +159,7 @@ export default defineConfig(() => {
                 manifest: {
                     name: 'Smartcore Books',
                     short_name: 'Smartcore Books',
-                    description: 'An open source, powerful, self-hosted personal finance app that is easy to use.',
+                    description: 'A simple, powerful bookkeeping app for your business and personal finances.',
                     theme_color: '#C67E48',
                     background_color: '#F6F7F8',
                     start_url: './',
