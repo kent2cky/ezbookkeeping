@@ -31,7 +31,7 @@ func main() {
 	core.BuildTime = BuildUnixTime
 
 	cmd := &cli.Command{
-		Name:    "ezBookkeeping",
+		Name:    "Smartcore Books",
 		Usage:   "An open source, powerful, self-hosted personal finance app that is easy to use.",
 		Version: GetFullVersion(),
 		Commands: []*cli.Command{
@@ -57,7 +57,7 @@ func main() {
 	err := cmd.Run(context.Background(), os.Args)
 
 	if err != nil {
-		log.Fatalf("Failed to run ezBookkeeping with %s: %v", os.Args, err)
+		log.Fatalf("Failed to run Smartcore Books with %s: %v", os.Args, err)
 	}
 }
 

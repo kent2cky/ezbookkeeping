@@ -157,8 +157,8 @@ export default defineConfig(() => {
                 injectRegister: false,
                 manifestFilename: 'manifest.json',
                 manifest: {
-                    name: 'ezBookkeeping',
-                    short_name: 'ezBookkeeping',
+                    name: 'Smartcore Books',
+                    short_name: 'Smartcore Books',
                     description: 'An open source, powerful, self-hosted personal finance app that is easy to use.',
                     theme_color: '#C67E48',
                     background_color: '#F6F7F8',

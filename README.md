@@ -1,4 +1,6 @@
-# ezBookkeeping
+# Smartcore Books
+Smartcore Books is built on [ezBookkeeping](https://github.com/mayswind/ezbookkeeping), an open source, MIT-licensed personal finance app. The upstream project documentation below still applies.
+
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/mayswind/ezbookkeeping/blob/master/LICENSE)
 [![Latest Release](https://img.shields.io/github/release/mayswind/ezbookkeeping.svg?style=flat)](https://github.com/mayswind/ezbookkeeping/releases)
 [![Latest Build](https://img.shields.io/github/actions/workflow/status/mayswind/ezbookkeeping/build-snapshot.yml?branch=main)](https://github.com/mayswind/ezbookkeeping/actions)

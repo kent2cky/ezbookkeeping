@@ -1,7 +1,7 @@
 {
     "global": {
         "app": {
-            "title": "ezBookkeeping"
+            "title": "Smartcore Books"
         }
     },
     "language": {
@@ -166,23 +166,23 @@
             "ruleIndex": "Regla #{index}",
             "accountActivationAndResendValidationEmailTip": "El enlace de activación de la cuenta se envió a tu dirección de correo electrónico: {email}. Si no recibes el correo, introduce nuevamente la contraseña y haz clic en el botón de abajo para reenviar el correo de validación.",
             "resendValidationEmailTip": "Si no recibes el correo, introduce nuevamente la contraseña y haz clic en el botón de abajo para reenviar el correo de validación a: {email}",
-            "oauth2bindTip": "Estás iniciando sesión con el usuario {userName} usando {providerName}. Porfavor introduce tu contraseña de ezBookkeeping para verificar."
+            "oauth2bindTip": "Estás iniciando sesión con el usuario {userName} usando {providerName}. Porfavor introduce tu contraseña de Smartcore Books para verificar."
         }
     },
     "dataExport": {
-        "defaultExportFilename": "ezBookkeeping_export_data",
-        "exportFilename": "ezBookkeeping_{nickname}_export_data",
-        "defaultExportStatisticsFileName": "ezBookkeeping_statistics_data",
-        "exportStatisticsFileName": "ezBookkeeping_{nickname}_statistics_data",
-        "defaultExportReconciliationStatementsFileName": "ezBookkeeping_reconciliation_statements",
-        "exportReconciliationStatementsFileName": "ezBookkeeping_{nickname}_reconciliation_statements",
-        "defaultInsightsExplorerQueryFileName": "ezBookkeeping_insights_explorer_query",
-        "insightsExplorerQueryFileName": "ezBookkeeping_{nickname}_insights_explorer_query",
-        "defaultImportDataMappingFileName": "ezBookkeeping_import_data_mapping",
-        "defaultImportHandlingScript": "ezBookkeeping_handling_script",
-        "defaultImportReplaceRuleFileName": "ezBookkeeping_import_replace_rule",
-        "defaultImportCheckResultFileName": "ezBookkeeping_import_check_result",
-        "defaultOverviewLayoutFileName": "ezBookkeeping_overview_layout"
+        "defaultExportFilename": "SmartcoreBooks_export_data",
+        "exportFilename": "SmartcoreBooks_{nickname}_export_data",
+        "defaultExportStatisticsFileName": "SmartcoreBooks_statistics_data",
+        "exportStatisticsFileName": "SmartcoreBooks_{nickname}_statistics_data",
+        "defaultExportReconciliationStatementsFileName": "SmartcoreBooks_reconciliation_statements",
+        "exportReconciliationStatementsFileName": "SmartcoreBooks_{nickname}_reconciliation_statements",
+        "defaultInsightsExplorerQueryFileName": "SmartcoreBooks_insights_explorer_query",
+        "insightsExplorerQueryFileName": "SmartcoreBooks_{nickname}_insights_explorer_query",
+        "defaultImportDataMappingFileName": "SmartcoreBooks_import_data_mapping",
+        "defaultImportHandlingScript": "SmartcoreBooks_handling_script",
+        "defaultImportReplaceRuleFileName": "SmartcoreBooks_import_replace_rule",
+        "defaultImportCheckResultFileName": "SmartcoreBooks_import_check_result",
+        "defaultOverviewLayoutFileName": "SmartcoreBooks_overview_layout"
     },
     "calendar": {
         "Gregorian": "Gregoriano",
@@ -1789,8 +1789,8 @@
     "Change Language": "Cambiar idioma",
     "Date is too early": "La Fecha Es Demasiado Temprana",
     "User Canceled": "Usuario cancelado",
-    "Welcome to ezBookkeeping": "Bienvenido a ezBookkeeping",
-    "Please log in with your ezBookkeeping account": "Inicia sesión con tu cuenta de ezBookkeeping",
+    "Welcome to Smartcore Books": "Bienvenido a Smartcore Books",
+    "Please log in with your Smartcore Books account": "Inicia sesión con tu cuenta de Smartcore Books",
     "Unlock Application": "Desbloquear aplicación",
     "Please enter your PIN code or use WebAuthn to unlock application": "Ingresa tu código PIN o utiliza WebAuthn para desbloquear la aplicación",
     "Please enter your PIN code to unlock application": "Ingresa tu código PIN para desbloquear la aplicación",
@@ -2242,13 +2242,13 @@
     "Filter Description": "Descripción del filtro",
     "How to import this file?": "¿Cómo importar este archivo?",
     "How to export this file?": "¿Cómo exportar este archivo?",
-    "ezBookkeeping File Format": "Formato de archivo ezBookkeeping",
+    "Smartcore Books File Format": "Formato de archivo Smartcore Books",
     "Custom File Format": "Formato de archivo personalizado",
     "General Data Exchange Format": "Formato general de intercambio de datos",
     "General Bank Statement Format": "Formato general de extracto bancario",
     "Other Bank/Payment App Statement File": "Extracto de otra entidad bancaria/aplicación",
     "Other Finance App File Format": "Otro formato de archivo de aplicación financiera",
-    "ezbookkeeping Data Export File": "Datos exportados de ezBookkeeping",
+    "Smartcore Books Data Export File": "Datos exportados de Smartcore Books",
     "Excel Workbook File": "Archivo Excel",
     "Excel Workbook File (.xlsx)": "Excel Workbook File (.xlsx)",
     "Excel 97-2003 Workbook File (.xls)": "Excel 97-2003 Workbook File (.xls)",
