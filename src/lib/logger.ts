@@ -3,34 +3,34 @@ import { isEnableDebug } from './settings.ts';
 function logDebug(msg: string, obj?: unknown): void {
     if (isEnableDebug()) {
         if (obj) {
-            console.debug('[ezBookkeeping Debug] ' + msg, obj);
+            console.debug('[Smartcore Books Debug] ' + msg, obj);
         } else {
-            console.debug('[ezBookkeeping Debug] ' + msg);
+            console.debug('[Smartcore Books Debug] ' + msg);
         }
     }
 }
 
 function logInfo(msg: string, obj?: unknown): void {
     if (obj) {
-        console.info('[ezBookkeeping Info] ' + msg, obj);
+        console.info('[Smartcore Books Info] ' + msg, obj);
     } else {
-        console.info('[ezBookkeeping Info] ' + msg);
+        console.info('[Smartcore Books Info] ' + msg);
     }
 }
 
 function logWarn(msg: string, obj?: unknown): void {
     if (obj) {
-        console.warn('[ezBookkeeping Warn] ' + msg, obj);
+        console.warn('[Smartcore Books Warn] ' + msg, obj);
     } else {
-        console.warn('[ezBookkeeping Warn] ' + msg);
+        console.warn('[Smartcore Books Warn] ' + msg);
     }
 }
 
 function logError(msg: string, obj?: unknown): void {
     if (obj) {
-        console.error('[ezBookkeeping Error] ' + msg, obj);
+        console.error('[Smartcore Books Error] ' + msg, obj);
     } else {
-        console.error('[ezBookkeeping Error] ' + msg);
+        console.error('[Smartcore Books Error] ' + msg);
     }
 }
 

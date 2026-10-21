@@ -32,11 +32,11 @@ import (
 // WebServer represents the server command
 var WebServer = &cli.Command{
 	Name:  "server",
-	Usage: "ezBookkeeping web server operation",
+	Usage: "Smartcore Books web server operation",
 	Commands: []*cli.Command{
 		{
 			Name:   "run",
-			Usage:  "Run ezBookkeeping web server",
+			Usage:  "Run Smartcore Books web server",
 			Action: bindAction(startWebServer),
 		},
 	},

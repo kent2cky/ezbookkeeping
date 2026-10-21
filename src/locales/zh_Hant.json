@@ -1,7 +1,7 @@
 {
     "global": {
         "app": {
-            "title": "ezBookkeeping"
+            "title": "Smartcore Books"
         }
     },
     "language": {
@@ -166,23 +166,23 @@
             "ruleIndex": "規則 #{index}",
             "accountActivationAndResendValidationEmailTip": "帳號啟用連結已經傳送到您的信箱地址：{email}，如果您沒有收到郵件，請再次輸入密碼並點擊下方的按鈕重新發送驗證郵件。",
             "resendValidationEmailTip": "如果您沒有收到郵件，請再次輸入密碼並點擊下方的按鈕重新發送驗證郵件到：{email}",
-            "oauth2bindTip": "您正在使用 {providerName} 登入 \"{userName}\" 使用者，請輸入您的 ezBookkeeping 的密碼以進行驗證。"
+            "oauth2bindTip": "您正在使用 {providerName} 登入 \"{userName}\" 使用者，請輸入您的 Smartcore Books 的密碼以進行驗證。"
         }
     },
     "dataExport": {
-        "defaultExportFilename": "ezBookkeeping_匯出資料",
-        "exportFilename": "ezBookkeeping_{nickname}_匯出資料",
-        "defaultExportStatisticsFileName": "ezBookkeeping_統計資料",
-        "exportStatisticsFileName": "ezBookkeeping_{nickname}_統計資料",
-        "defaultExportReconciliationStatementsFileName": "ezBookkeeping_對帳單",
-        "exportReconciliationStatementsFileName": "ezBookkeeping_{nickname}_對帳單",
-        "defaultInsightsExplorerQueryFileName": "ezBookkeeping_洞察探索查詢",
-        "insightsExplorerQueryFileName": "ezBookkeeping_{nickname}_洞察探索查詢",
-        "defaultImportDataMappingFileName": "ezBookkeeping_匯入資料對應檔案",
-        "defaultImportHandlingScript": "ezBookkeeping_匯入處理腳本",
-        "defaultImportReplaceRuleFileName": "ezBookkeeping_匯入替換規則檔案",
-        "defaultImportCheckResultFileName": "ezBookkeeping_匯入檢查結果",
-        "defaultOverviewLayoutFileName": "ezBookkeeping_總覽佈局"
+        "defaultExportFilename": "SmartcoreBooks_匯出資料",
+        "exportFilename": "SmartcoreBooks_{nickname}_匯出資料",
+        "defaultExportStatisticsFileName": "SmartcoreBooks_統計資料",
+        "exportStatisticsFileName": "SmartcoreBooks_{nickname}_統計資料",
+        "defaultExportReconciliationStatementsFileName": "SmartcoreBooks_對帳單",
+        "exportReconciliationStatementsFileName": "SmartcoreBooks_{nickname}_對帳單",
+        "defaultInsightsExplorerQueryFileName": "SmartcoreBooks_洞察探索查詢",
+        "insightsExplorerQueryFileName": "SmartcoreBooks_{nickname}_洞察探索查詢",
+        "defaultImportDataMappingFileName": "SmartcoreBooks_匯入資料對應檔案",
+        "defaultImportHandlingScript": "SmartcoreBooks_匯入處理腳本",
+        "defaultImportReplaceRuleFileName": "SmartcoreBooks_匯入替換規則檔案",
+        "defaultImportCheckResultFileName": "SmartcoreBooks_匯入檢查結果",
+        "defaultOverviewLayoutFileName": "SmartcoreBooks_總覽佈局"
     },
     "calendar": {
         "Gregorian": "公曆",
@@ -1789,8 +1789,8 @@
     "Change Language": "變更語言",
     "Date is too early": "日期過早",
     "User Canceled": "使用者已取消",
-    "Welcome to ezBookkeeping": "歡迎使用 ezBookkeeping",
-    "Please log in with your ezBookkeeping account": "請使用您的 ezBookkeeping 帳號登入",
+    "Welcome to Smartcore Books": "歡迎使用 Smartcore Books",
+    "Please log in with your Smartcore Books account": "請使用您的 Smartcore Books 帳號登入",
     "Unlock Application": "解鎖應用程式",
     "Please enter your PIN code or use WebAuthn to unlock application": "請輸入您的 PIN 碼，或使用 WebAuthn 解鎖應用程式",
     "Please enter your PIN code to unlock application": "請輸入您的 PIN 碼解鎖應用程式",
@@ -2242,13 +2242,13 @@
     "Filter Description": "篩選描述",
     "How to import this file?": "如何匯入此檔案？",
     "How to export this file?": "如何匯出此檔案？",
-    "ezBookkeeping File Format": "ezBookkeeping 檔案格式",
+    "Smartcore Books File Format": "Smartcore Books 檔案格式",
     "Custom File Format": "自訂檔案格式",
     "General Data Exchange Format": "通用資料交換格式",
     "General Bank Statement Format": "通用銀行對帳單格式",
     "Other Bank/Payment App Statement File": "其他銀行/支付應用程式對帳單檔案",
     "Other Finance App File Format": "其他金融應用程式檔案格式",
-    "ezbookkeeping Data Export File": "ezbookkeeping 資料匯出檔案",
+    "Smartcore Books Data Export File": "Smartcore Books 資料匯出檔案",
     "Excel Workbook File": "Excel 工作簿檔案",
     "Excel Workbook File (.xlsx)": "Excel 工作簿檔案 (.xlsx)",
     "Excel 97-2003 Workbook File (.xls)": "Excel 97-2003 工作簿檔案 (.xls)",

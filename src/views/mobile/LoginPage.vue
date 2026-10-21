@@ -98,7 +98,7 @@
 
                 <div class="login-page-powered-by margin-top-half">
                     <span>Powered by</span>
-                    <f7-link @click="openExternalUrl('https://github.com/mayswind/ezbookkeeping')" target="_blank">ezBookkeeping</f7-link>
+                    <span>Smartcore Books</span>
                     <span>{{ version }}</span>
                 </div>
             </f7-block-footer>
@@ -109,7 +109,7 @@
 
             <div class="login-page-powered-by margin-top-half">
                 <span>Powered by</span>
-                <f7-link @click="openExternalUrl('https://github.com/mayswind/ezbookkeeping')" target="_blank">ezBookkeeping</f7-link>
+                <span>Smartcore Books</span>
                 <span>{{ version }}</span>
             </div>
         </f7-toolbar>
@@ -227,7 +227,7 @@ const props = defineProps<{
 }>();
 
 const { tt } = useI18n();
-const { showAlert, showConfirm, showToast, openExternalUrl } = useI18nUIComponents();
+const { showAlert, showConfirm, showToast } = useI18nUIComponents();
 
 const rootStore = useRootStore();
 
