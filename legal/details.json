@@ -2,7 +2,7 @@
     "_help": "Fill in every value that starts with REPLACE, then run: python3 scripts/build-legal.py. Change 'version' whenever the wording or these details change in a way users should re-accept; the app then asks everybody to accept again.",
     "version": "2026-10-09",
     "effective_date": "9 October 2026",
-    "service_name": "Smartcore ezBookkeeping",
+    "service_name": "Smartcore Books",
     "site_url": "https://book.vmerlabs.com",
     "company_name": "Smartcore Infosys Ltd",
     "company_address": "5th Floor, 39 New Market Road, Onitsha, Anambra State, Nigeria",

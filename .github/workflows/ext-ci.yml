@@ -1,6 +1,6 @@
 name: Ext CI
 
-# Guards the extension module: tests, and that upstream files stay untouched except for the registered seams.
+# Checks the app: type-check, frontend tests and build, legal pages, and the ext module's Go tests.
 on:
   pull_request:
   push:
@@ -18,11 +18,6 @@ jobs:
       - uses: actions/setup-go@v6
         with:
           go-version: '1.27.1'
-
-      - name: Seam check
-        run: |
-          BASE="origin/${{ github.base_ref || 'main' }}"
-          scripts/check-seams.sh "$BASE"
 
       - uses: actions/setup-node@v6
         with:

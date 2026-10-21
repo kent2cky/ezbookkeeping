@@ -10,7 +10,7 @@ Turn the upstream personal-finance app into a multi-user service for small busin
 - **Owner / manager / staff** roles: staff log in with their own account and work on the owner's books.
 - **Inventory** with a single store or several locations.
 - **Sales** that automatically create transactions, including **sales on credit** and later **credit repayments**.
-- All of it added so that **upstream (`mayswind/ezbookkeeping`) can still be merged** without constant conflicts.
+- Smartcore Books started as a fork of `mayswind/ezbookkeeping`. It is now its own product: upstream files may be changed freely and upstream is no longer merged (see section 11).
 
 Individuals are unaffected: with no business header every request behaves exactly like upstream.
 
@@ -22,8 +22,7 @@ Individuals are unaffected: with no business header every request behaves exactl
 | Backend: locations, items, stock ledger | Done, tested |
 | Backend: customers, sales, credit, repayments | Done, tested |
 | HTTP API and routes | Done, tested end to end through the real middleware |
-| Upstream seams (3 files, ~39 lines) | Done |
-| Seam check script and CI workflow | Done (CI workflow untested on GitHub) |
+| CI workflow | Done |
 | Frontend: foundation, business switcher, Team page, Inventory page | Done: type-check, lint, build and unit tests pass; **not yet clicked through in a browser** |
 | Frontend: sales screen (cart, cash / part / credit, sales history, void) | Done: type-check, lint, build, unit tests and an API smoke test pass; **not yet clicked through in a browser** |
 | Frontend: customers page (balances, history, edit, **repayments**) | Done: type-check, lint, build, unit tests and an API smoke test pass; **not yet clicked through in a browser** |
@@ -59,7 +58,9 @@ pkg/ext/
   api/              package extapi    HTTP handlers and request/response types
 ```
 
-### The seams (the only upstream files changed)
+### Where the ext module hooks into the app
+
+The ext module still lives in its own files; these are the places where the rest of the app calls into it, tagged `[ext]`:
 
 | File | Change |
 |---|---|
@@ -73,8 +74,7 @@ pkg/ext/
 | `src/views/mobile/HomePage.vue` | one import and one `<ext-mobile-business-tab />` line (the Business tab of the bottom bar), tagged `[ext]` |
 | `src/router/mobile.ts` | one import and one `...extMobileRoutes` line (the Business page of the mobile app), tagged `[ext]` |
 
-`scripts/check-seams.sh [base]` fails if a branch changes any other upstream file or makes a seam grow past 40 lines.
-Run it before merging and in CI (`.github/workflows/ext-ci.yml`).
+Since the move to Smartcore Books there is no rule against changing other upstream files; change them directly when that is the simplest fix.
 
 ## 4. Owner / manager / staff
 
@@ -345,7 +345,7 @@ Code review findings were fixed in this branch (see git history); what remains:
 
 - **Not atomic across the books and the ext tables.** They are written in separate database transactions with compensating deletes.
   If the process dies, or a compensating delete itself fails, a sale can exist without its finance transaction (or the reverse).
-  Failures are logged with the ids needed to repair them. Fixing this properly needs an exported upstream method that accepts an open session; that would be one more seam.
+  Failures are logged with the ids needed to repair them. Fixing this properly needs an exported method in the books services that accepts an open session.
   A reconciliation report ("sales whose transactions are missing") would be a cheap safety net.
 - **Row locking is only verified on SQLite.** On MySQL/PostgreSQL stock changes take `SELECT ... FOR UPDATE` on the location and item rows
   (always locations first, then items in ascending id order). That code path cannot run in the SQLite tests, so test concurrent sales on the real database before relying on it.
@@ -366,16 +366,13 @@ API smoke test against a running local server: `python3 scripts/ext-smoke.py` (7
 export PATH=$HOME/sdk/go/bin:$PATH GOTOOLCHAIN=local     # Go 1.27.1 (see go.mod)
 go build ./...
 go test ./pkg/ext/...                                    # the ext tests (SQLite, temp files)
-scripts/check-seams.sh main                              # only registered seams may differ from upstream
 ```
 
-### Pulling upstream
+### Upstream
 
-1. `git remote add upstream https://github.com/mayswind/ezbookkeeping.git` (once), `git config rerere.enabled true`.
-2. Keep `main` a clean mirror of upstream where possible, merge it into this branch, never rebase it.
-3. Likely conflicts are only the three seam files. Resolve by keeping upstream's code and re-adding the `[ext]` lines.
-4. After merging: `go build ./... && go test ./pkg/ext/... && scripts/check-seams.sh upstream/main`, then re-read the permission matrix for new upstream routes.
-5. If upstream changes `GetCurrentUid`, the authorization middleware, or the order of `apiV1Route.Use(...)`, re-check that delegation still runs after authorization and before the routes.
+Smartcore Books no longer tracks `mayswind/ezbookkeeping`, and upstream files are changed freely (for example for the rebrand).
+Merging upstream wholesale would now conflict in many places, so take upstream fixes by hand when one is worth having,
+then re-read the permission matrix if the fix adds or changes API routes.
 
 ### Adding a feature to the module
 
