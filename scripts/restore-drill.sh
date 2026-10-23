@@ -33,7 +33,8 @@ done
 python3 - "$ENV_FILE" "$WORK/ls.env" <<'PY' || { echo "cannot read credentials from $ENV_FILE"; exit 2; }
 import os, sys
 wanted = {"LITESTREAM_ACCESS_KEY_ID": None, "LITESTREAM_SECRET_ACCESS_KEY": None,
-          "LITESTREAM_BUCKET": "ezbookkeeping-sqlite-bkup", "LITESTREAM_REGION": "eu-north-1"}
+          "LITESTREAM_BUCKET": "ezbookkeeping-sqlite-bkup", "LITESTREAM_REGION": "eu-north-1",
+          "LITESTREAM_PATH": "ezbookkeeping"}   # the folder in the bucket; put LITESTREAM_PATH=ezbookkeeping-staging in the env file to drill staging
 for line in open(sys.argv[1]):
     key, _, value = line.rstrip("\n").partition("=")
     if key in wanted:
