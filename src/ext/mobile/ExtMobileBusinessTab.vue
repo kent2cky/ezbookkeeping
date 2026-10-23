@@ -1,7 +1,6 @@
 <template>
     <f7-link class="link" href="/ext/sell" :aria-label="tt('Sell')" v-if="teamAvailable">
-        <f7-icon f7="cart" aria-hidden="true"></f7-icon>
-        <span class="tabbar-label">{{ tt('Sell') }}</span>
+        <f7-icon f7="cart" class="ebk-tarbar-big-icon" aria-hidden="true"></f7-icon>
     </f7-link>
 
     <ext-mobile-terms-gate />
