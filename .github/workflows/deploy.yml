@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - main
+      - staging
   workflow_dispatch:
 
+# main deploys production, staging deploys the staging service; each branch queues behind its own earlier runs only
 concurrency:
-  group: deploy
+  group: deploy-${{ github.ref_name }}
   cancel-in-progress: false
 
 env:
@@ -98,15 +100,16 @@ jobs:
             APP_IMAGE=${{ steps.ref.outputs.image }}
           tags: |
             ${{ steps.ref.outputs.render_image }}:${{ github.sha }}
-            ${{ steps.ref.outputs.render_image }}:latest
+            ${{ steps.ref.outputs.render_image }}:${{ github.ref_name == 'main' && 'latest' || 'staging' }}
 
   deploy:
     needs: [build, verify]
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
     steps:
       - name: Trigger Render deploy
         env:
+          # each environment holds the deploy hook of its own Render service under this name
           RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
           IMAGE_URL: ${{ needs.build.outputs.render-image }}:${{ github.sha }}
         run: |

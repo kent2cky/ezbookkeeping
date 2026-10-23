@@ -4,7 +4,7 @@ dbs:
     replicas:
       - type: s3
         bucket: ${LITESTREAM_BUCKET}
-        path: ezbookkeeping
+        path: ${LITESTREAM_PATH}
         region: ${LITESTREAM_REGION}
         # keep a week of history so a mistake noticed days later can still be rolled back (the default is one day);
         # a full snapshot is taken every day, so a restore never has to replay more than a day of changes
