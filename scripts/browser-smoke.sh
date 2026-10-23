@@ -38,7 +38,7 @@ check_page() {
     timeout 120 "$BROWSER" --no-sandbox --disable-gpu --user-data-dir="$profile" --window-size="$size" \
         --enable-logging=stderr --v=0 --virtual-time-budget=25000 --dump-dom "$BASE/$path" >"$profile/dom.html" 2>"$profile/log.txt"
 
-    local errors; errors="$(grep -E 'CONSOLE' "$profile/log.txt" | grep -E 'Uncaught|TypeError|ReferenceError|SyntaxError|\[ezBookkeeping Error\]|Failed to load module' | cut -c1-240)"
+    local errors; errors="$(grep -E 'CONSOLE' "$profile/log.txt" | grep -E 'Uncaught|TypeError|ReferenceError|SyntaxError|\[Smartcore Books Error\]|Failed to load module' | cut -c1-240)"
     local text; text="$(python3 -I - "$profile/dom.html" <<'PY'
 import re, sys
 html = open(sys.argv[1], errors="replace").read()

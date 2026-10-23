@@ -1,7 +1,7 @@
 {
     "global": {
         "app": {
-            "title": "ezBookkeeping"
+            "title": "Smartcore Books"
         }
     },
     "language": {
@@ -166,23 +166,23 @@
             "ruleIndex": "Rule #{index}",
             "accountActivationAndResendValidationEmailTip": "Linkul de activare a contului a fost trimis la adresa ta de email: {email}. Dacă nu primești mesajul, te rugăm să introduci din nou parola și să faci clic pe butonul de mai jos pentru a retrimite emailul de validare.",
             "resendValidationEmailTip": "Dacă nu primești mesajul, te rugăm să introduci din nou parola și să faci clic pe butonul de mai jos pentru a retrimite emailul de validare la: {email}",
-            "oauth2bindTip": "Te autentifici în contul de utilizator {userName} folosind {providerName}. Te rugăm să introduci parola ezBookkeeping pentru verificare."
+            "oauth2bindTip": "Te autentifici în contul de utilizator {userName} folosind {providerName}. Te rugăm să introduci parola Smartcore Books pentru verificare."
         }
     },
     "dataExport": {
-        "defaultExportFilename": "ezBookkeeping_export_date",
-        "exportFilename": "ezBookkeeping_{nickname}_export_date",
-        "defaultExportStatisticsFileName": "ezBookkeeping_date_statistici",
-        "exportStatisticsFileName": "ezBookkeeping_{nickname}_date_statistici",
-        "defaultExportReconciliationStatementsFileName": "ezBookkeeping_situatii_reconciliere",
-        "exportReconciliationStatementsFileName": "ezBookkeeping_{nickname}_situatii_reconciliere",
-        "defaultInsightsExplorerQueryFileName": "ezBookkeeping_insights_explorer_query",
-        "insightsExplorerQueryFileName": "ezBookkeeping_{nickname}_insights_explorer_query",
-        "defaultImportDataMappingFileName": "ezBookkeeping_asociere_date_import",
-        "defaultImportHandlingScript": "ezBookkeeping_script_procesare",
-        "defaultImportReplaceRuleFileName": "ezBookkeeping_regula_inlocuire_import",
-        "defaultImportCheckResultFileName": "ezBookkeeping_rezultat_verificare_import",
-        "defaultOverviewLayoutFileName": "ezBookkeeping_overview_layout"
+        "defaultExportFilename": "SmartcoreBooks_export_date",
+        "exportFilename": "SmartcoreBooks_{nickname}_export_date",
+        "defaultExportStatisticsFileName": "SmartcoreBooks_date_statistici",
+        "exportStatisticsFileName": "SmartcoreBooks_{nickname}_date_statistici",
+        "defaultExportReconciliationStatementsFileName": "SmartcoreBooks_situatii_reconciliere",
+        "exportReconciliationStatementsFileName": "SmartcoreBooks_{nickname}_situatii_reconciliere",
+        "defaultInsightsExplorerQueryFileName": "SmartcoreBooks_insights_explorer_query",
+        "insightsExplorerQueryFileName": "SmartcoreBooks_{nickname}_insights_explorer_query",
+        "defaultImportDataMappingFileName": "SmartcoreBooks_asociere_date_import",
+        "defaultImportHandlingScript": "SmartcoreBooks_script_procesare",
+        "defaultImportReplaceRuleFileName": "SmartcoreBooks_regula_inlocuire_import",
+        "defaultImportCheckResultFileName": "SmartcoreBooks_rezultat_verificare_import",
+        "defaultOverviewLayoutFileName": "SmartcoreBooks_overview_layout"
     },
     "calendar": {
         "Gregorian": "Gregorian",
@@ -1789,8 +1789,8 @@
     "Change Language": "Schimbă limba",
     "Date is too early": "Data este prea timpurie",
     "User Canceled": "Anulat de utilizator",
-    "Welcome to ezBookkeeping": "Bun venit la ezBookkeeping",
-    "Please log in with your ezBookkeeping account": "Te rugăm să te autentifici cu contul ezBookkeeping",
+    "Welcome to Smartcore Books": "Bun venit la Smartcore Books",
+    "Please log in with your Smartcore Books account": "Te rugăm să te autentifici cu contul Smartcore Books",
     "Unlock Application": "Deblochează aplicația",
     "Please enter your PIN code or use WebAuthn to unlock application": "Te rugăm să introduci codul PIN sau să folosești WebAuthn pentru a debloca aplicația",
     "Please enter your PIN code to unlock application": "Te rugăm să introduci codul PIN pentru a debloca aplicația",
@@ -2242,13 +2242,13 @@
     "Filter Description": "Filtrează după descriere",
     "How to import this file?": "Cum se importă acest fișier?",
     "How to export this file?": "Cum se exportă acest fișier?",
-    "ezBookkeeping File Format": "Format fișier ezBookkeeping",
+    "Smartcore Books File Format": "Format fișier Smartcore Books",
     "Custom File Format": "Format fișier personalizat",
     "General Data Exchange Format": "Format general de schimb de date",
     "General Bank Statement Format": "Format general pentru extras de cont",
     "Other Bank/Payment App Statement File": "Alt fișier extras bancă/aplicație de plată",
     "Other Finance App File Format": "Format fișier altă aplicație financiară",
-    "ezbookkeeping Data Export File": "Fișier export date ezBookkeeping",
+    "Smartcore Books Data Export File": "Fișier export date Smartcore Books",
     "Excel Workbook File": "Fișier registru Excel",
     "Excel Workbook File (.xlsx)": "Fișier registru Excel (.xlsx)",
     "Excel 97-2003 Workbook File (.xls)": "Fișier registru Excel 97-2003 (.xls)",

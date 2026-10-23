@@ -3,7 +3,10 @@ package core
 import "fmt"
 
 // ApplicationName represents the application name
-const ApplicationName = "ezBookkeeping"
+const ApplicationName = "Smartcore Books"
+
+// ApplicationIdentifier represents the application name without spaces, used in user agents and identifiers
+const ApplicationIdentifier = "SmartcoreBooks"
 
 // Version, CommitHash and BuildTime are set at build
 var (
@@ -14,8 +17,8 @@ var (
 
 func GetOutgoingUserAgent() string {
 	if Version == "" {
-		return ApplicationName
+		return ApplicationIdentifier
 	}
 
-	return fmt.Sprintf("%s/%s", ApplicationName, Version)
+	return fmt.Sprintf("%s/%s", ApplicationIdentifier, Version)
 }
