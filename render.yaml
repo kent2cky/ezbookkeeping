@@ -1,134 +1,133 @@
 services:
-  - type: web
-    name: ezbookkeeping
-    runtime: image
-    plan: free
-    image:
-      url: ghcr.io/kent2cky/smartcore-books-render:latest
-    healthCheckPath: /
-    domains:
-      - book.vmerlabs.com
-    envVars:
-      - key: EBK_SERVER_HTTP_PORT
-        value: "10000"
-      - key: EBK_SERVER_DOMAIN
-        value: book.vmerlabs.com
-      - key: EBK_SERVER_ROOT_URL
-        value: https://book.vmerlabs.com/
-      - key: EBK_DATABASE_TYPE
-        value: sqlite3
-      - key: EBK_SECURITY_ENABLE_API_TOKEN
-        value: "true"
-      # Render hands traffic to the app from the machine's own IPv6 loopback address (::1), which the default list does not
-      # trust, and the next hop is Cloudflare's servers, which also need to be trusted. Without both, every visitor shared one
-      # login-failure counter. Generate the value with scripts/trusted-proxies.sh. See docs/OPERATIONS.md.
-      - key: EBK_SECURITY_TRUSTED_PROXY_IPS
-        value: "10.0.0.0/8,169.254.0.0/16,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16,::1/128,173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22,2400:cb00::/32,2606:4700::/32,2803:f800::/32,2405:b500::/32,2405:8100::/32,2a06:98c0::/29,2c0f:f248::/32"
-      - key: EBK_SECURITY_SECRET_KEY
-        sync: false
-      # Mail through regular SES SMTP on port 2587 (Render blocks 25, 465 and 587 on the free plan)
-      - key: EBK_MAIL_ENABLE_SMTP
-        value: "true"
-      - key: EBK_MAIL_SMTP_HOST
-        value: email-smtp.eu-north-1.amazonaws.com:2587
-      - key: EBK_MAIL_FROM_ADDRESS
-        value: mailer@vmerlabs.com
-      - key: EBK_MAIL_SMTP_USER
-        sync: false
-      - key: EBK_MAIL_SMTP_PASSWD
-        sync: false
-      # Litestream replication to S3
-      - key: LITESTREAM_BUCKET
-        sync: false
-      - key: LITESTREAM_REGION
-        value: eu-north-1
-      - key: LITESTREAM_ACCESS_KEY_ID
-        sync: false
-      - key: LITESTREAM_SECRET_ACCESS_KEY
-        sync: false
-      # Uploaded files (transaction pictures, avatars, custom icons) go to S3 because the Render disk is ephemeral
-      - key: EBK_STORAGE_TYPE
-        value: s3
-      - key: EBK_STORAGE_S3_ENDPOINT
-        value: s3.eu-north-1.amazonaws.com
-      - key: EBK_STORAGE_S3_REGION
-        value: eu-north-1
-      - key: EBK_STORAGE_S3_USE_SSL
-        value: "true"
-      - key: EBK_STORAGE_S3_BUCKET
-        value: ezbookkeeping-sqlite-bkup
-      - key: EBK_STORAGE_S3_ROOT_PATH
-        value: /uploads
-      - key: EBK_STORAGE_S3_ACCESS_KEY_ID
-        sync: false
-      - key: EBK_STORAGE_S3_SECRET_ACCESS_KEY
-        sync: false
+    - type: web
+      name: ezbookkeeping
+      runtime: image
+      plan: free
+      image:
+          url: ghcr.io/kent2cky/smartcore-books-render:latest
+      healthCheckPath: /
+      domains:
+          - book.vmerlabs.com
+      envVars:
+          - key: EBK_SERVER_HTTP_PORT
+            value: "10000"
+          - key: EBK_SERVER_DOMAIN
+            value: book.vmerlabs.com
+          - key: EBK_SERVER_ROOT_URL
+            value: https://book.vmerlabs.com/
+          - key: EBK_DATABASE_TYPE
+            value: sqlite3
+          - key: EBK_SECURITY_ENABLE_API_TOKEN
+            value: "true"
+          # Render hands traffic to the app from the machine's own IPv6 loopback address (::1), which the default list does not
+          # trust, and the next hop is Cloudflare's servers, which also need to be trusted. Without both, every visitor shared one
+          # login-failure counter. Generate the value with scripts/trusted-proxies.sh. See docs/OPERATIONS.md.
+          - key: EBK_SECURITY_TRUSTED_PROXY_IPS
+            value: "10.0.0.0/8,169.254.0.0/16,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16,::1/128,173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22,2400:cb00::/32,2606:4700::/32,2803:f800::/32,2405:b500::/32,2405:8100::/32,2a06:98c0::/29,2c0f:f248::/32"
+          - key: EBK_SECURITY_SECRET_KEY
+            sync: false
+          # Mail through regular SES SMTP on port 2587 (Render blocks 25, 465 and 587 on the free plan)
+          - key: EBK_MAIL_ENABLE_SMTP
+            value: "true"
+          - key: EBK_MAIL_SMTP_HOST
+            value: email-smtp.eu-north-1.amazonaws.com:2587
+          - key: EBK_MAIL_FROM_ADDRESS
+            value: mailer@vmerlabs.com
+          - key: EBK_MAIL_SMTP_USER
+            sync: false
+          - key: EBK_MAIL_SMTP_PASSWD
+            sync: false
+          # Litestream replication to S3
+          - key: LITESTREAM_BUCKET
+            sync: false
+          - key: LITESTREAM_REGION
+            value: eu-north-1
+          - key: LITESTREAM_ACCESS_KEY_ID
+            sync: false
+          - key: LITESTREAM_SECRET_ACCESS_KEY
+            sync: false
+          # Uploaded files (transaction pictures, avatars, custom icons) go to S3 because the Render disk is ephemeral
+          - key: EBK_STORAGE_TYPE
+            value: s3
+          - key: EBK_STORAGE_S3_ENDPOINT
+            value: s3.eu-north-1.amazonaws.com
+          - key: EBK_STORAGE_S3_REGION
+            value: eu-north-1
+          - key: EBK_STORAGE_S3_USE_SSL
+            value: "true"
+          - key: EBK_STORAGE_S3_BUCKET
+            value: ezbookkeeping-sqlite-bkup
+          - key: EBK_STORAGE_S3_ROOT_PATH
+            value: /uploads
+          - key: EBK_STORAGE_S3_ACCESS_KEY_ID
+            sync: false
+          - key: EBK_STORAGE_S3_SECRET_ACCESS_KEY
+            sync: false
 
-  # Staging: a copy of the service above that shares nothing with it but the image and the S3 bucket. It has its own domain,
-  # replica path and upload folder, and its secrets (sync: false) are set separately in the Render dashboard.
-  - type: web
-    name: ezbookkeeping-staging
-    runtime: image
-    plan: free
-    image:
-      url: ghcr.io/kent2cky/smartcore-books-render:staging
-    healthCheckPath: /
-    domains:
-      - book-staging.vmerlabs.com
-    envVars:
-      - key: EBK_SERVER_HTTP_PORT
-        value: "10000"
-      - key: EBK_SERVER_DOMAIN
-        value: book-staging.vmerlabs.com
-      - key: EBK_SERVER_ROOT_URL
-        value: https://book-staging.vmerlabs.com/
-      - key: EBK_DATABASE_TYPE
-        value: sqlite3
-      - key: EBK_SECURITY_ENABLE_API_TOKEN
-        value: "true"
-      # Render hands traffic to the app from the machine's own IPv6 loopback address (::1), which the default list does not
-      # trust, and the next hop is Cloudflare's servers, which also need to be trusted. Without both, every visitor shared one
-      # login-failure counter. Generate the value with scripts/trusted-proxies.sh. See docs/OPERATIONS.md.
-      - key: EBK_SECURITY_TRUSTED_PROXY_IPS
-        value: "10.0.0.0/8,169.254.0.0/16,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16,::1/128,173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22,2400:cb00::/32,2606:4700::/32,2803:f800::/32,2405:b500::/32,2405:8100::/32,2a06:98c0::/29,2c0f:f248::/32"
-      - key: EBK_SECURITY_SECRET_KEY
-        sync: false
-      # Mail through regular SES SMTP on port 2587 (Render blocks 25, 465 and 587 on the free plan)
-      - key: EBK_MAIL_ENABLE_SMTP
-        value: "true"
-      - key: EBK_MAIL_SMTP_HOST
-        value: email-smtp.eu-north-1.amazonaws.com:2587
-      - key: EBK_MAIL_FROM_ADDRESS
-        value: mailer@vmerlabs.com
-      - key: EBK_MAIL_SMTP_USER
-        sync: false
-      - key: EBK_MAIL_SMTP_PASSWD
-        sync: false
-      # Litestream replication to S3
-      - key: LITESTREAM_BUCKET
-        sync: false
-      - key: LITESTREAM_PATH
-        value: ezbookkeeping-staging
-      - key: LITESTREAM_REGION
-        value: eu-north-1
-      - key: LITESTREAM_ACCESS_KEY_ID
-        sync: false
-      - key: LITESTREAM_SECRET_ACCESS_KEY
-        sync: false
-      # Uploaded files (transaction pictures, avatars, custom icons) go to S3 because the Render disk is ephemeral
-      - key: EBK_STORAGE_TYPE
-        value: s3
-      - key: EBK_STORAGE_S3_ENDPOINT
-        value: s3.eu-north-1.amazonaws.com
-      - key: EBK_STORAGE_S3_REGION
-        value: eu-north-1
-      - key: EBK_STORAGE_S3_USE_SSL
-        value: "true"
-      - key: EBK_STORAGE_S3_BUCKET
-        value: ezbookkeeping-sqlite-bkup
-      - key: EBK_STORAGE_S3_ROOT_PATH
-        value: /uploads-staging
-      - key: EBK_STORAGE_S3_ACCESS_KEY_ID
-        sync: false
-      - key: EBK_STORAGE_S3_SECRET_ACCESS_KEY
-        sync: false
+    # Staging: a copy of the service above that shares nothing with it but the image and the S3 bucket. It uses Render's own
+    # domain (if the name was taken Render adds a suffix, so check the real address in the dashboard and update the two
+    # values below), and has its own replica path and upload folder. Its secrets (sync: false) are set in the dashboard.
+    - type: web
+      name: ezbookkeeping-staging
+      runtime: image
+      plan: free
+      image:
+          url: ghcr.io/kent2cky/smartcore-books-render:staging
+      healthCheckPath: /
+      envVars:
+          - key: EBK_SERVER_HTTP_PORT
+            value: "10000"
+          - key: EBK_SERVER_DOMAIN
+            value: smartcore-books.onrender.com
+          - key: EBK_SERVER_ROOT_URL
+            value: https://smartcore-books.onrender.com/
+          - key: EBK_DATABASE_TYPE
+            value: sqlite3
+          - key: EBK_SECURITY_ENABLE_API_TOKEN
+            value: "true"
+          # Render hands traffic to the app from the machine's own IPv6 loopback address (::1), which the default list does not
+          # trust, and the next hop is Cloudflare's servers, which also need to be trusted. Without both, every visitor shared one
+          # login-failure counter. Generate the value with scripts/trusted-proxies.sh. See docs/OPERATIONS.md.
+          - key: EBK_SECURITY_TRUSTED_PROXY_IPS
+            value: "10.0.0.0/8,169.254.0.0/16,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16,::1/128,173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22,2400:cb00::/32,2606:4700::/32,2803:f800::/32,2405:b500::/32,2405:8100::/32,2a06:98c0::/29,2c0f:f248::/32"
+          - key: EBK_SECURITY_SECRET_KEY
+            sync: false
+          # Mail through regular SES SMTP on port 2587 (Render blocks 25, 465 and 587 on the free plan)
+          - key: EBK_MAIL_ENABLE_SMTP
+            value: "true"
+          - key: EBK_MAIL_SMTP_HOST
+            value: email-smtp.eu-north-1.amazonaws.com:2587
+          - key: EBK_MAIL_FROM_ADDRESS
+            value: mailer@vmerlabs.com
+          - key: EBK_MAIL_SMTP_USER
+            sync: false
+          - key: EBK_MAIL_SMTP_PASSWD
+            sync: false
+          # Litestream replication to S3
+          - key: LITESTREAM_BUCKET
+            sync: false
+          - key: LITESTREAM_PATH
+            value: ezbookkeeping-staging
+          - key: LITESTREAM_REGION
+            value: eu-north-1
+          - key: LITESTREAM_ACCESS_KEY_ID
+            sync: false
+          - key: LITESTREAM_SECRET_ACCESS_KEY
+            sync: false
+          # Uploaded files (transaction pictures, avatars, custom icons) go to S3 because the Render disk is ephemeral
+          - key: EBK_STORAGE_TYPE
+            value: s3
+          - key: EBK_STORAGE_S3_ENDPOINT
+            value: s3.eu-north-1.amazonaws.com
+          - key: EBK_STORAGE_S3_REGION
+            value: eu-north-1
+          - key: EBK_STORAGE_S3_USE_SSL
+            value: "true"
+          - key: EBK_STORAGE_S3_BUCKET
+            value: ezbookkeeping-sqlite-bkup
+          - key: EBK_STORAGE_S3_ROOT_PATH
+            value: /uploads-staging
+          - key: EBK_STORAGE_S3_ACCESS_KEY_ID
+            sync: false
+          - key: EBK_STORAGE_S3_SECRET_ACCESS_KEY
+            sync: false
